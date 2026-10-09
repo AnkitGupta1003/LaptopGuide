@@ -3,165 +3,235 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Laptop Guide v3.1 — 18 Laptops, Corrected Rankings, Full Names, Real Links</title>
+<title>Laptop Guide v5 — 17 Laptops, Updated Prices & Links</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 <style>
   :root{
-    --bg:#0a0e17; --surface:#101827; --surface2:#141d30; --border:#1f2b45;
-    --text:#e6edf7; --muted:#8fa1bd; --accent:#6366f1; --accent2:#22d3ee;
-    --buy:#22c55e; --consider:#eab308; --skip:#ef4444;
+    --bg:#0a0e17; --surface:#111827; --surface-2:#16213a; --border:#26334f; --border-soft:#1a2438;
+    --text:#eaf0fb; --text-soft:#c6d2e8; --muted:#9db0cf;
+    --accent:#6366f1; --accent-2:#22d3ee;
+    --buy:#22c55e; --buy-ink:#03130a; --consider:#eab308; --consider-ink:#221b02; --skip:#f87171; --skip-ink:#2b0708;
+    --r-lg:16px; --r-md:12px; --r-sm:8px;
   }
   *{margin:0;padding:0;box-sizing:border-box}
   html{scroll-behavior:smooth}
-  body{font-family:'Inter',system-ui,-apple-system,sans-serif;background:var(--bg);color:var(--text);line-height:1.6}
-  h1,h2,h3,.logo{font-family:'Space Grotesk','Inter',sans-serif}
-  section{scroll-margin-top:80px}
-  nav{position:sticky;top:0;z-index:50;background:#0a0e17e6;backdrop-filter:blur(10px);border-bottom:1px solid var(--border);padding:.8rem 5vw;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:.6rem}
-  .logo{font-size:1.25rem;font-weight:700;background:linear-gradient(90deg,var(--accent),var(--accent2));-webkit-background-clip:text;background-clip:text;color:transparent}
-  .nav-links{display:flex;gap:1.2rem;flex-wrap:wrap}
-  .nav-links a{color:var(--muted);text-decoration:none;font-size:.9rem;font-weight:500}
-  .nav-links a:hover{color:var(--accent2)}
-  header{padding:3.5rem 5vw 2.5rem;max-width:1200px;margin:0 auto}
-  .hero-badge{display:inline-block;font-size:.78rem;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--accent2);border:1px solid var(--border);background:var(--surface);border-radius:999px;padding:.35rem .9rem;margin-bottom:1.2rem}
-  header h1{font-size:clamp(2rem,5.5vw,3.2rem);line-height:1.12;margin-bottom:1rem}
-  header h1 span{background:linear-gradient(90deg,var(--accent),var(--accent2));-webkit-background-clip:text;background-clip:text;color:transparent}
-  header p.sub{color:var(--muted);max-width:820px;font-size:1rem;margin-bottom:1.4rem}
-  .alert{background:#0f2318;border:1px solid #1e4630;border-left:4px solid var(--buy);border-radius:.7rem;padding:1rem 1.2rem;max-width:920px;font-size:.93rem}
-  .alert strong{color:var(--buy)}
-  .alert b{color:var(--text)}
-  .top-picks{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:1rem;margin-top:2rem}
-  .pick{background:linear-gradient(180deg,var(--surface2),var(--surface));border:1px solid var(--border);border-radius:1rem;padding:1.05rem;transition:transform .25s,border-color .25s}
-  .pick:hover{transform:translateY(-5px);border-color:var(--accent)}
-  .pick .medal{font-size:1.35rem}
-  .pick h3{font-size:.94rem;margin:.45rem 0 .15rem;line-height:1.35}
-  .pick .tag{color:var(--accent2);font-size:.72rem;font-weight:600;text-transform:uppercase;letter-spacing:.06em}
-  .pick .spec-line{color:var(--muted);font-size:.76rem;margin:.2rem 0}
-  .pick .price{font-size:1.25rem;font-weight:700;margin:.3rem 0}
-  .pick p{color:var(--muted);font-size:.81rem}
-  .pick a{color:var(--accent2);font-size:.78rem;text-decoration:none;border-bottom:1px dotted var(--accent2)}
-  .wrap{max-width:1200px;margin:0 auto;padding:3.2rem 5vw}
+  body{font-family:'Inter',system-ui,-apple-system,'Segoe UI',sans-serif;background:var(--bg);color:var(--text);line-height:1.65;font-size:16px}
+  h1,h2,h3,h4,.logo,.stat b,.v-price,.sl-rank{text-wrap:balance;font-family:'Space Grotesk','Inter',sans-serif}
+  section{scroll-margin-top:76px;border-top:1px solid var(--border-soft)}
+  .wrap{max-width:1180px;margin:0 auto;padding:clamp(3rem,6vw,4.5rem) clamp(1.25rem,5vw,3rem)}
+  a:focus-visible,button:focus-visible,input:focus-visible,[tabindex]:focus-visible{outline:2px solid var(--accent-2);outline-offset:2px;border-radius:8px}
+  @media(prefers-reduced-motion:reduce){*,*::before,*::after{transition:none!important;animation:none!important}html{scroll-behavior:auto}}
+
+  /* ---------- NAV ---------- */
+  nav{position:sticky;top:0;z-index:50;background:rgba(10,14,23,.92);backdrop-filter:blur(12px);border-bottom:1px solid var(--border-soft);padding:.7rem clamp(1rem,4vw,2.5rem);display:flex;align-items:center;justify-content:space-between;gap:1rem}
+  .logo{font-size:1.15rem;font-weight:700;background:linear-gradient(90deg,var(--accent),var(--accent-2));-webkit-background-clip:text;background-clip:text;color:transparent;white-space:nowrap}
+  .nav-links{display:flex;gap:1.1rem;overflow-x:auto;-webkit-overflow-scrolling:touch;scrollbar-width:none}
+  .nav-links::-webkit-scrollbar{display:none}
+  .nav-links a{color:var(--muted);text-decoration:none;font-size:.86rem;font-weight:600;white-space:nowrap;padding:.25rem 0;border-bottom:2px solid transparent;transition:color .2s,border-color .2s}
+  .nav-links a:hover{color:var(--accent-2);border-color:var(--accent-2)}
+
+  /* ---------- HERO ---------- */
+  header{padding:clamp(2.5rem,6vw,4rem) clamp(1.25rem,5vw,3rem) clamp(2rem,5vw,3rem);max-width:1180px;margin:0 auto}
+  .hero-badge{display:inline-block;font-size:.74rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--accent-2);border:1px solid var(--border);background:var(--surface);border-radius:999px;padding:.32rem .85rem;margin-bottom:1.1rem}
+  header h1{font-size:clamp(2rem,5.2vw,3.2rem);line-height:1.08;letter-spacing:-.02em;margin-bottom:.9rem;max-width:900px}
+  header h1 span{background:linear-gradient(90deg,var(--accent),var(--accent-2));-webkit-background-clip:text;background-clip:text;color:transparent}
+  header .sub{color:var(--muted);max-width:780px;font-size:1rem;margin-bottom:.5rem}
+
+  .verdict{display:grid;grid-template-columns:auto 1fr auto;gap:1.25rem;align-items:center;background:linear-gradient(135deg,rgba(99,102,241,.16),rgba(34,211,238,.07));border:1px solid rgba(99,102,241,.45);border-radius:var(--r-lg);padding:1.25rem 1.4rem;margin-top:1.75rem}
+  .v-medal{font-size:1.7rem;background:rgba(34,211,238,.1);border:1px solid rgba(34,211,238,.35);width:56px;height:56px;border-radius:14px;display:flex;align-items:center;justify-content:center}
+  .v-kicker{font-size:.7rem;font-weight:800;letter-spacing:.13em;text-transform:uppercase;color:var(--accent-2)}
+  .verdict h3{font-size:1.02rem;margin:.2rem 0 .15rem;line-height:1.35}
+  .verdict p{color:var(--muted);font-size:.85rem;max-width:56ch}
+  .v-cta{display:flex;flex-direction:column;gap:.5rem;min-width:200px}
+  .v-price{font-size:1.6rem;font-weight:800;font-variant-numeric:tabular-nums;line-height:1.1}
+
+  .btn{display:inline-flex;align-items:center;justify-content:center;gap:.45rem;padding:.62rem 1.1rem;border-radius:10px;font-weight:700;font-size:.86rem;text-decoration:none;border:1px solid transparent;cursor:pointer;transition:transform .15s ease,box-shadow .2s ease,border-color .2s,color .2s;font-family:inherit}
+  .btn-primary{background:var(--accent-2);color:#04141d;box-shadow:0 4px 18px rgba(34,211,238,.22)}
+  .btn-primary:hover{transform:translateY(-2px);box-shadow:0 8px 26px rgba(34,211,238,.32)}
+  .btn-ghost{border-color:var(--border);color:var(--text-soft);background:rgba(17,24,39,.55)}
+  .btn-ghost:hover{border-color:var(--accent-2);color:var(--accent-2)}
+  .btn-sm{padding:.38rem .8rem;font-size:.77rem;border-radius:8px}
+
+  .stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:.75rem;margin-top:1.25rem}
+  .stat{background:var(--surface);border:1px solid var(--border-soft);border-radius:var(--r-md);padding:.8rem 1rem}
+  .stat b{display:block;font-size:1.3rem;font-variant-numeric:tabular-nums;line-height:1.2}
+  .stat span{color:var(--muted);font-size:.75rem}
+
+  .picks{display:grid;grid-template-columns:repeat(auto-fit,minmax(225px,1fr));gap:1rem;margin-top:1.5rem}
+  .pick{background:var(--surface);border:1px solid var(--border-soft);border-radius:var(--r-lg);padding:1.1rem;transition:transform .2s,border-color .2s}
+  .pick:hover{transform:translateY(-4px);border-color:var(--accent)}
+  .pick .medal{font-size:1.3rem}
+  .pick .tag{color:var(--accent-2);font-size:.7rem;font-weight:800;text-transform:uppercase;letter-spacing:.07em;display:block;margin:.35rem 0 .2rem}
+  .pick h3{font-size:.93rem;line-height:1.35;margin-bottom:.2rem}
+  .pick .spec-line{color:var(--muted);font-size:.76rem;margin-bottom:.35rem}
+  .pick .price{font-size:1.2rem;font-weight:800;font-variant-numeric:tabular-nums;margin-bottom:.35rem}
+  .pick p{color:var(--muted);font-size:.8rem;margin-bottom:.6rem}
+  .pick a{color:var(--accent-2);font-size:.78rem;font-weight:700;text-decoration:none;border-bottom:1px dotted var(--accent-2)}
+
+  /* ---------- SECTIONS ---------- */
   .section-head{margin-bottom:1.6rem}
-  .section-head h2{font-size:clamp(1.5rem,3.5vw,2.1rem)}
-  .section-head h2 em{color:var(--accent2);font-style:normal}
-  .section-head p{color:var(--muted);margin-top:.4rem;max-width:840px}
-  .f-scroll{overflow-x:auto;border:1px solid var(--border);border-radius:1rem;margin-bottom:1.3rem}
-  .f3{width:100%;border-collapse:collapse;min-width:1100px;font-size:.85rem}
-  .f3 th{background:var(--surface2);padding:.7rem;text-align:left;border-bottom:1px solid var(--border);font-size:.71rem;text-transform:uppercase;color:var(--muted)}
-  .f3 th:first-child{width:130px}
-  .f3 td{padding:.6rem .75rem;border-bottom:1px solid var(--border);vertical-align:top}
-  .f3 tr:last-child td{border-bottom:none}
-  .f3 td:first-child{color:var(--muted);font-weight:600;font-size:.73rem;text-transform:uppercase}
-  .f3 tr:hover td{background:#16203a80}
-  .f3 .win{color:var(--buy);font-weight:700}
-  .f3 .warn{color:var(--consider);font-weight:600}
-  .f3 a{color:var(--accent2);text-decoration:none;border-bottom:1px dotted var(--accent2)}
-  .callout{background:linear-gradient(135deg,#1e1b4b,#164e63);border:1px solid var(--accent);border-radius:1rem;padding:1.3rem;margin-bottom:1.3rem}
-  .callout h3{margin-bottom:.5rem}
-  .callout p{color:var(--muted);font-size:.92rem}
-  .callout b{color:var(--accent2)}
-  .decision{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:1rem}
-  .dcard{background:var(--surface);border:1px solid var(--border);border-radius:.9rem;padding:1.05rem}
-  .dcard h4{font-size:.92rem;margin-bottom:.35rem}
-  .dcard p{color:var(--muted);font-size:.83rem}
-  .legend{display:flex;gap:.8rem;flex-wrap:wrap;margin-bottom:1rem;font-size:.78rem}
-  .legend span{padding:.2rem .6rem;border-radius:999px;border:1px solid var(--border);background:var(--surface)}
-  .lg-ok{color:var(--buy)} .lg-inf{color:var(--consider)} .lg-un{color:var(--muted)}
-  .table-tools{display:flex;align-items:center;gap:1rem;flex-wrap:wrap;margin-bottom:1rem}
-  .table-tools label{color:var(--muted);font-size:.9rem;font-weight:500}
-  .table-tools input[type=range]{accent-color:var(--accent);width:220px}
-  #budgetLabel{color:var(--accent2);font-weight:600;font-size:.9rem}
-  .hint{font-size:.8rem;color:var(--muted)}
-  .table-scroll{overflow-x:auto;border:1px solid var(--border);border-radius:1rem}
-  table.cmp{width:100%;border-collapse:collapse;min-width:1220px;font-size:.84rem}
-  .cmp thead th{background:var(--surface2);text-align:left;padding:.8rem .85rem;font-size:.71rem;text-transform:uppercase;letter-spacing:.05em;color:var(--muted);border-bottom:1px solid var(--border);white-space:nowrap}
+  .eyebrow{display:block;font-size:.7rem;font-weight:800;letter-spacing:.15em;text-transform:uppercase;color:var(--accent-2);margin-bottom:.45rem}
+  .section-head h2{font-size:clamp(1.4rem,3vw,1.9rem);letter-spacing:-.01em;margin-bottom:.35rem}
+  .section-head h2 em{color:var(--accent-2);font-style:normal}
+  .section-head p{color:var(--muted);max-width:820px;font-size:.93rem}
+
+  /* ---------- SHORTLIST ---------- */
+  .sl-list{list-style:none;display:flex;flex-direction:column;gap:.8rem;counter-reset:none}
+  .sl-item{display:grid;grid-template-columns:52px 1fr auto;gap:1.1rem;background:var(--surface);border:1px solid var(--border-soft);border-left:3px solid var(--border);border-radius:var(--r-md);padding:1rem 1.15rem;align-items:start;transition:border-color .2s}
+  .sl-item:hover{border-color:var(--accent)}
+  .sl-item.v-buy{border-left-color:var(--buy)}
+  .sl-item.v-consider{border-left-color:var(--consider)}
+  .sl-rank{width:40px;height:40px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:.95rem;background:var(--surface-2);border:1px solid var(--border);color:var(--muted)}
+  .sl-item:nth-child(-n+3) .sl-rank{background:linear-gradient(135deg,var(--accent),var(--accent-2));color:#fff;border:none}
+  .sl-top{display:flex;gap:.6rem;align-items:center;flex-wrap:wrap}
+  .sl-top h3{font-size:.99rem;line-height:1.3}
+  .sl-variant{color:var(--accent-2);font-size:.76rem;font-family:ui-monospace,SFMono-Regular,Menlo,monospace;margin:.2rem 0 .3rem}
+  .sl-why{color:var(--muted);font-size:.86rem;max-width:75ch}
+  .sl-links{display:flex;gap:.5rem;margin-top:.55rem;flex-wrap:wrap}
+  .sl-price{font-size:1.15rem;font-weight:800;font-variant-numeric:tabular-nums;white-space:nowrap;text-align:right}
+  .sl-price small{display:block;color:var(--muted);font-weight:500;font-size:.66rem}
+
+  .upd{display:inline-block;font-size:.64rem;font-weight:800;padding:.14rem .5rem;border-radius:6px;border:1px solid;margin-top:.3rem;letter-spacing:.02em}
+  .upd.down{color:#4ade80;border-color:rgba(74,222,128,.45);background:rgba(74,222,128,.08)}
+  .upd.up{color:#f87171;border-color:rgba(248,113,113,.45);background:rgba(248,113,113,.08)}
+  .upd.fix{color:#67e8f9;border-color:rgba(103,232,249,.45);background:rgba(103,232,249,.08)}
+
+  .callout{background:linear-gradient(135deg,rgba(30,27,75,.65),rgba(22,78,104,.5));border:1px solid var(--accent);border-radius:var(--r-lg);padding:1.25rem 1.4rem;margin-top:1.4rem}
+  .callout h3{margin-bottom:.45rem;font-size:1.02rem}
+  .callout p{color:var(--text-soft);font-size:.89rem}
+  .callout b{color:var(--accent-2)}
+
+  /* ---------- COMPARE ---------- */
+  .tools{display:flex;align-items:center;gap:1rem;flex-wrap:wrap;margin-bottom:1rem}
+  .tools label{color:var(--muted);font-size:.86rem;font-weight:600}
+  .tools input[type=range]{accent-color:var(--accent-2);width:200px}
+  #budgetLabel{color:var(--accent-2);font-weight:700;font-size:.83rem}
+  .hint{font-size:.78rem;color:var(--muted)}
+  .table-scroll{overflow-x:auto;border:1px solid var(--border-soft);border-radius:var(--r-lg)}
+  table.cmp{width:100%;border-collapse:collapse;min-width:1240px;font-size:.84rem}
+  .cmp thead th{background:var(--surface-2);text-align:left;padding:.78rem .9rem;font-size:.69rem;text-transform:uppercase;letter-spacing:.06em;color:#c3d0e8;border-bottom:1px solid var(--border);white-space:nowrap}
   .cmp thead th[data-sort]{cursor:pointer;user-select:none}
-  .cmp thead th[data-sort]:hover{color:var(--accent2)}
-  .cmp thead th .arrow{font-size:.7rem;margin-left:.25rem}
-  .cmp tbody td{padding:.72rem .85rem;border-bottom:1px solid var(--border);vertical-align:top}
+  .cmp thead th[data-sort]:hover{color:var(--accent-2)}
+  .cmp thead th .arrow{font-size:.65rem;margin-left:.25rem;color:var(--accent-2)}
+  .cmp tbody td{padding:.78rem .9rem;border-bottom:1px solid var(--border-soft);vertical-align:top}
   .cmp tbody tr:last-child td{border-bottom:none}
-  .cmp tbody tr:hover{background:#16203a80}
-  .rank-cell{font-weight:700;color:var(--accent2)}
-  .laptop-name{font-weight:600}
-  .model-code{display:block;color:var(--accent2);font-size:.7rem;font-family:monospace}
-  .laptop-note{display:block;color:var(--muted);font-size:.75rem;margin-top:.15rem;max-width:290px}
-  .lnks{display:flex;gap:.4rem;margin-top:.4rem;flex-wrap:wrap}
-  .lnk{display:inline-block;font-size:.68rem;font-weight:600;padding:.14rem .5rem;border-radius:.4rem;border:1px solid var(--border);color:var(--accent2);text-decoration:none;background:var(--surface2)}
-  .lnk:hover{border-color:var(--accent);color:#fff}
-  .strike{color:var(--muted);text-decoration:line-through;font-size:.74rem}
-  .off{color:var(--buy);font-size:.73rem;font-weight:600}
-  .pill{display:inline-block;padding:.18rem .6rem;border-radius:999px;font-size:.69rem;font-weight:700;text-transform:uppercase;letter-spacing:.04em}
-  .pill.buy{background:#22c55e22;color:var(--buy);border:1px solid #22c55e55}
-  .pill.consider{background:#eab30822;color:var(--consider);border:1px solid #eab30855}
-  .pill.skip{background:#ef444422;color:var(--skip);border:1px solid #ef444455}
-  .tabs{display:flex;gap:.6rem;flex-wrap:wrap;margin-bottom:1.4rem}
-  .tab-btn{background:var(--surface);border:1px solid var(--border);color:var(--muted);padding:.55rem 1.1rem;border-radius:999px;cursor:pointer;font-size:.87rem;font-weight:600}
-  .tab-btn:hover{border-color:var(--accent)}
-  .tab-btn.active{background:linear-gradient(90deg,var(--accent),var(--accent2));color:#fff;border-color:transparent}
-  .ranking-panel{display:none}
-  .ranking-panel.active{display:block}
-  .rank-list{list-style:none}
-  .rank-item{display:grid;grid-template-columns:52px 1fr auto;gap:1rem;align-items:start;background:var(--surface);border:1px solid var(--border);border-radius:.9rem;padding:.92rem 1.1rem;margin-bottom:.6rem}
-  .rank-item:hover{border-color:var(--accent)}
-  .rank-num{width:40px;height:40px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:700;background:var(--surface2);border:1px solid var(--border);color:var(--muted);font-size:.82rem}
-  .rank-item.top .rank-num{background:linear-gradient(135deg,var(--accent),var(--accent2));color:#fff;border:none}
-  .rank-item h4{font-size:.94rem;line-height:1.32}
-  .rank-item .why{color:var(--muted);font-size:.82rem;margin-top:.15rem}
-  .rank-price{font-weight:700;white-space:nowrap;font-size:.92rem}
-  .rank-price small{display:block;color:var(--muted);font-weight:400;font-size:.7rem;text-align:right}
-  .cond{color:var(--consider);font-weight:600}
-  .matrix-scroll{overflow-x:auto;border:1px solid var(--border);border-radius:1rem}
-  .matrix{width:100%;border-collapse:collapse;min-width:1000px;font-size:.85rem}
-  .matrix th{background:var(--surface2);padding:.7rem;text-align:center;border-bottom:1px solid var(--border);font-size:.73rem;text-transform:uppercase;color:var(--muted)}
+  .cmp tr.group-row td{background:var(--surface-2);font-size:.7rem;font-weight:800;letter-spacing:.11em;text-transform:uppercase;color:var(--accent-2);padding:.55rem .9rem;border-bottom:1px solid var(--border)}
+  .rank-cell{font-weight:800;color:var(--accent-2);white-space:nowrap;font-variant-numeric:tabular-nums}
+  .laptop-name{font-weight:700}
+  .model-code{display:block;color:var(--accent-2);font-size:.7rem;font-family:ui-monospace,SFMono-Regular,Menlo,monospace;margin-top:.1rem}
+  .laptop-note{display:block;color:var(--muted);font-size:.75rem;margin-top:.2rem;max-width:300px}
+  .lnks{display:flex;gap:.4rem;margin-top:.5rem;flex-wrap:wrap}
+  .lnk{display:inline-block;font-size:.68rem;font-weight:800;padding:.22rem .6rem;border-radius:999px;border:1px solid var(--border);color:#aebfe0;text-decoration:none;transition:color .2s,border-color .2s}
+  .lnk:hover{color:var(--accent-2);border-color:var(--accent-2)}
+  .lnk.direct{color:var(--accent-2);border-color:rgba(34,211,238,.5);background:rgba(34,211,238,.08)}
+  .strike{color:var(--muted);text-decoration:line-through;font-size:.73rem}
+  .off{color:var(--buy);font-size:.73rem;font-weight:700}
+  .pnum{font-variant-numeric:tabular-nums}
+  .pill{display:inline-block;padding:.22rem .68rem;border-radius:999px;font-size:.67rem;font-weight:800;text-transform:uppercase;letter-spacing:.06em}
+  .pill.buy{background:var(--buy);color:var(--buy-ink)}
+  .pill.consider{background:var(--consider);color:var(--consider-ink)}
+  .pill.skip{background:var(--skip);color:var(--skip-ink)}
+  .tfoot-note{margin-top:.9rem;color:var(--muted);font-size:.8rem;border-left:3px solid var(--accent);padding-left:.9rem}
+
+  /* mobile: table → cards */
+  @media(max-width:880px){
+    .table-scroll{overflow:visible;border:none}
+    .cmp thead{display:none}
+    .cmp,.cmp tbody{display:block}
+    .cmp tbody tr{display:flex;flex-direction:column;background:var(--surface);border:1px solid var(--border-soft);border-radius:var(--r-md);padding:.9rem 1rem;margin-bottom:.9rem}
+    .cmp tbody tr[data-verdict="buy"]{border-left:3px solid var(--buy)}
+    .cmp tbody tr[data-verdict="consider"]{border-left:3px solid var(--consider)}
+    .cmp tbody tr[data-verdict="skip"]{border-left:3px solid var(--skip)}
+    .cmp tbody tr.group-row{display:block;background:transparent;border:none;padding:1.1rem 0 .2rem;margin:0}
+    .cmp tbody tr.group-row td{display:block;background:transparent;border:none;padding:0;font-size:.72rem}
+    .cmp tbody td{display:flex;justify-content:space-between;align-items:flex-start;gap:1rem;border-bottom:1px dashed var(--border-soft);padding:.48rem 0}
+    .cmp tbody td:last-child{border-bottom:none}
+    .cmp tbody td[data-label]::before{content:attr(data-label);flex:none;font-size:.64rem;font-weight:800;letter-spacing:.09em;text-transform:uppercase;color:var(--muted);padding-top:.22rem}
+    .cmp tbody td .td-val{text-align:right}
+    .cmp td.rank-cell{order:-3;border-bottom:none;padding-bottom:.1rem}
+    .cmp td.rank-cell::before{content:none}
+    .cmp td.rank-cell .td-val{text-align:left}
+    .cmp td.cell-laptop{order:-2;display:block;border-bottom:1px solid var(--border-soft);padding-bottom:.7rem;margin-bottom:.2rem}
+    .cmp td.cell-laptop .laptop-note{max-width:none}
+    .cmp td.cell-verdict{order:-1}
+    .cmp td.cell-verdict::before{content:none}
+    .cmp td.cell-verdict .td-val{text-align:left}
+  }
+  @media(min-width:881px){
+    .cmp tbody tr:hover{background:rgba(34,211,238,.045)}
+    .cmp tbody td .td-val{display:inline}
+  }
+
+  /* ---------- MATRIX / CHIP / CHECKS ---------- */
+  .scroll-hint{display:none;color:var(--muted);font-size:.78rem;margin-bottom:.5rem}
+  @media(max-width:900px){.scroll-hint{display:block}}
+  .matrix-scroll{overflow-x:auto;border:1px solid var(--border-soft);border-radius:var(--r-lg)}
+  .matrix{width:100%;border-collapse:collapse;min-width:980px;font-size:.84rem}
+  .matrix th{background:var(--surface-2);padding:.7rem .75rem;text-align:center;border-bottom:1px solid var(--border);font-size:.72rem;text-transform:uppercase;color:#c3d0e8}
   .matrix th:first-child{text-align:left}
-  .matrix td{padding:.62rem .7rem;text-align:center;border-bottom:1px solid var(--border)}
-  .matrix td:first-child{text-align:left;font-weight:600;font-size:.82rem}
-  .matrix tr:hover{background:#16203a80}
-  .cpu-grid{display:grid;grid-template-columns:1.25fr .95fr;gap:1.3rem}
-  .cpu-card{background:var(--surface);border:1px solid var(--border);border-radius:1rem;padding:1.4rem}
-  .cpu-card h3{margin-bottom:.9rem;font-size:1.02rem}
-  .cpu-card table{min-width:0;font-size:.82rem;width:100%;border-collapse:collapse}
-  .cpu-card td{padding:.48rem .5rem;border-bottom:1px solid var(--border);vertical-align:top}
-  .cpu-card td:first-child{color:var(--muted);white-space:nowrap}
+  .matrix td{padding:.6rem .7rem;text-align:center;border-bottom:1px solid var(--border-soft)}
+  .matrix td:first-child{text-align:left;font-weight:700;font-size:.81rem}
+  .matrix tbody tr:hover{background:rgba(34,211,238,.045)}
+
+  .cpu-grid{display:grid;grid-template-columns:1.25fr .95fr;gap:1.2rem}
+  .cpu-card{background:var(--surface);border:1px solid var(--border-soft);border-radius:var(--r-lg);padding:1.35rem}
+  .cpu-card h3{margin-bottom:.85rem;font-size:1rem}
+  .cpu-card table{width:100%;border-collapse:collapse;font-size:.82rem}
+  .cpu-card td{padding:.48rem .5rem;border-bottom:1px solid var(--border-soft);vertical-align:top}
+  .cpu-card td:first-child{color:var(--muted);white-space:nowrap;font-weight:600}
   .cpu-card tr:last-child td{border-bottom:none}
   .cpu-card ul{list-style:none;margin-top:.6rem}
-  .cpu-card li{padding:.38rem 0;border-bottom:1px dashed var(--border);font-size:.84rem;color:var(--muted)}
-  .cpu-card li:last-child{border:none}
+  .cpu-card li{padding:.38rem 0;border-bottom:1px dashed var(--border-soft);font-size:.84rem;color:var(--text-soft)}
+  .cpu-card li:last-child{border-bottom:none}
   .ok{color:var(--buy)} .mix{color:var(--consider)} .bad{color:var(--skip)}
-  .lesson{background:linear-gradient(135deg,#1e1b4b,#164e63);border:1px solid var(--accent);border-radius:1rem;padding:1.4rem;margin-top:1.3rem}
-  .ladder{margin-top:.8rem;display:flex;flex-direction:column;gap:.45rem}
-  .ladder .step{display:flex;justify-content:space-between;align-items:center;background:#0d1424;border:1px solid var(--border);border-radius:.6rem;padding:.55rem .85rem;font-size:.84rem;gap:1rem}
-  .ladder .step b{color:var(--accent2);white-space:nowrap}
-  .ladder .step span{color:var(--muted);font-size:.77rem}
+  .lesson{background:linear-gradient(135deg,rgba(30,27,75,.65),rgba(22,78,104,.5));border:1px solid var(--accent);border-radius:var(--r-lg);padding:1.35rem;margin-top:1.2rem}
+  .lesson h3{margin-bottom:.4rem}
+  .ladder{margin-top:.75rem;display:flex;flex-direction:column;gap:.45rem}
+  .ladder .step{display:flex;justify-content:space-between;align-items:center;gap:1rem;background:rgba(10,14,23,.55);border:1px solid var(--border-soft);border-radius:var(--r-sm);padding:.52rem .85rem;font-size:.83rem}
+  .ladder .step b{color:var(--accent-2);white-space:nowrap}
+  .ladder .step span{color:var(--muted);font-size:.76rem;text-align:right}
+
   .checks{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:1rem}
-  .check{background:var(--surface);border:1px solid var(--border);border-radius:.9rem;padding:1.05rem 1.15rem}
-  .check h4{font-size:.93rem;margin-bottom:.3rem}
+  .check{background:var(--surface);border:1px solid var(--border-soft);border-radius:var(--r-md);padding:1.05rem 1.15rem}
+  .check h4{font-size:.92rem;margin-bottom:.3rem}
   .check h4 span{margin-right:.5rem}
-  .check .stamp{float:right;font-size:.65rem;font-weight:700;letter-spacing:.05em;padding:.15rem .5rem;border-radius:999px}
-  .stamp.ok{background:#22c55e22;color:var(--buy);border:1px solid #22c55e55}
-  .stamp.inf{background:#eab30822;color:var(--consider);border:1px solid #eab30855}
-  .stamp.todo{background:#8fa1bd22;color:var(--muted);border:1px solid var(--border)}
-  .check p{color:var(--muted);font-size:.83rem}
-  .protip{margin-top:1.6rem;background:linear-gradient(135deg,#14532d,#0f3d2e);border:1px solid var(--buy);border-radius:1rem;padding:1.4rem}
-  .protip h3{color:var(--buy);margin-bottom:.4rem}
-  .avoid{margin-top:1.3rem;background:#2a1113;border:1px solid var(--skip);border-radius:1rem;padding:1.4rem}
-  .avoid h3{color:var(--skip);margin-bottom:.6rem}
-  .avoid ul{list-style:none}
-  .avoid li{padding:.42rem 0;border-bottom:1px dashed #ef444433;font-size:.89rem}
-  .avoid li:last-child{border:none}
-  .avoid b{color:var(--skip)}
-  .srcs{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:1rem}
-  .src{background:var(--surface);border:1px solid var(--border);border-radius:.9rem;padding:1.05rem}
-  .src h4{font-size:.92rem}
-  .src p{color:var(--muted);font-size:.8rem;margin:.25rem 0 .6rem}
-  .src a{color:var(--accent2);text-decoration:none;font-size:.82rem;border-bottom:1px dotted var(--accent2)}
-  .src-note{margin-top:1.3rem;color:var(--muted);font-size:.82rem;border-left:3px solid var(--accent);padding-left:1rem}
-  footer{border-top:1px solid var(--border);margin-top:2rem;padding:2rem 5vw;color:var(--muted);font-size:.82rem;text-align:center}
+  .check .stamp{float:right;font-size:.63rem;font-weight:800;letter-spacing:.06em;padding:.16rem .5rem;border-radius:999px}
+  .stamp.ok{background:rgba(34,197,94,.16);color:var(--buy);border:1px solid rgba(34,197,94,.4)}
+  .stamp.inf{background:rgba(234,179,8,.14);color:var(--consider);border:1px solid rgba(234,179,8,.4)}
+  .stamp.todo{background:rgba(157,176,207,.12);color:var(--muted);border:1px solid var(--border)}
+  .check p{color:var(--muted);font-size:.82rem}
+  .protip{margin-top:1.4rem;background:linear-gradient(135deg,rgba(20,83,45,.55),rgba(15,61,46,.45));border:1px solid var(--buy);border-radius:var(--r-lg);padding:1.3rem}
+  .protip h3{color:var(--buy);margin-bottom:.35rem;font-size:1rem}
+  .protip p{color:var(--text-soft);font-size:.88rem}
+
+  .srcs{display:grid;grid-template-columns:repeat(auto-fill,minmax(235px,1fr));gap:1rem}
+  .src{background:var(--surface);border:1px solid var(--border-soft);border-radius:var(--r-md);padding:1.05rem}
+  .src h4{font-size:.9rem}
+  .src p{color:var(--muted);font-size:.78rem;margin:.25rem 0 .55rem}
+  .src a{color:var(--accent-2);text-decoration:none;font-size:.8rem;font-weight:700;border-bottom:1px dotted var(--accent-2)}
+  .src-note{margin-top:1.2rem;color:var(--muted);font-size:.8rem;border-left:3px solid var(--accent);padding-left:.9rem}
+
+  footer{border-top:1px solid var(--border-soft);margin-top:2rem;padding:2rem 5vw;color:var(--muted);font-size:.8rem;text-align:center}
   footer b{color:var(--text)}
-  @media(max-width:900px){
+
+  /* ---------- STICKY MOBILE CTA ---------- */
+  .mcta{position:fixed;left:0;right:0;bottom:0;z-index:60;display:none;align-items:center;justify-content:space-between;gap:.75rem;background:rgba(10,14,23,.97);border-top:1px solid var(--border);padding:.65rem 1rem;backdrop-filter:blur(12px)}
+  .mcta-info b{display:block;font-size:.8rem;line-height:1.3}
+  .mcta-info span{color:var(--muted);font-size:.7rem}
+
+  @media(max-width:880px){
+    .mcta{display:flex}
+    body{padding-bottom:76px}
+    .verdict{grid-template-columns:1fr}
+    .v-cta{flex-direction:row;flex-wrap:wrap;align-items:center}
+    .v-price{width:100%}
+    .sl-item{grid-template-columns:44px 1fr}
+    .sl-price{grid-column:2;text-align:left;margin-top:.2rem}
     .cpu-grid{grid-template-columns:1fr}
-    .rank-item{grid-template-columns:44px 1fr}
-    .rank-price{grid-column:2}
+    .btn{width:100%}
+    .sl-links .btn{width:auto}
+    .mcta .btn{width:auto}
   }
 </style>
 </head>
@@ -170,9 +240,8 @@
 <nav>
   <div class="logo">💻 Laptop Guide</div>
   <div class="nav-links">
-    <a href="#podium">Podium</a>
+    <a href="#shortlist">Shortlist</a>
     <a href="#compare">Compare</a>
-    <a href="#rankings">Rankings</a>
     <a href="#usecase">Use-Case Fit</a>
     <a href="#cpu">Chip Guide</a>
     <a href="#checklist">Checklist</a>
@@ -180,194 +249,253 @@
   </div>
 </nav>
 
+<!-- ================= HERO ================= -->
 <header>
-  <span class="hero-badge">v3.1 · rendering bug fixed · 15 priced + 3 fallback listings</span>
-  <h1>The <span>Laptop Guide</span> for College, Coding, Editing, Gaming & Multitasking</h1>
-  <p class="sub">Every laptop carries its <b>full name and version</b> (A715-79G exists in three CPU versions — each listed separately). Rankings are built on <b>verified / conservative specs only</b>: an unverified spec is never credited until the live listing confirms it.</p>
-  <div class="alert">
-    ⚡ <strong>Ranking method (v3):</strong> the Lenovo IdeaPad Slim 3 15AHP10 is ranked on its <b>conservative</b> GPU case (Radeon 610M) since no listing confirmed the 680M — so it sits at <b>#9 overall</b>, below both Acer i7 machines and the RTX 2050 MSI Cyborg 15. Five listings carry <b>real dedicated RTX GPUs</b> and dominate every gaming-weighted list. The blue "not ranked" box covers only the <b>three listings that had no price</b> in your message.
+  <span class="hero-badge">v5 · 17 listings · prices &amp; links corrected</span>
+  <h1>The <span>Laptop Guide</span> for College, Coding, Editing, Gaming &amp; Multitasking</h1>
+  <p class="sub">Every laptop carries its full name and version — the Acer Aspire 7 A715-79G exists in three CPU variants, each ranked separately. Ranked by how well the total package justifies its price.</p>
+
+  <div class="verdict">
+    <div class="v-medal">🏆</div>
+    <div>
+      <span class="v-kicker">Best overall · My #1</span>
+      <h3>Acer Aspire 7 A715-79G — Intel Core i7-13620H · RTX 3050 6GB · 144Hz</h3>
+      <p>The strongest of the three Aspire 7 chips (10 cores / 16 threads), the 6GB card, and the lowest variant price of the lot. Strong at all five of My jobs.</p>
+    </div>
+    <div class="v-cta">
+      <div class="v-price">₹64,809</div>
+      <a class="btn btn-primary" href="https://www.flipkart.com/acer-aspire-7-intel-core-i7-13th-gen-13620h-16-gb-512-gb-ssd-windows-11-home-6-graphics-nvidia-geforce-rtx-3050-144-hz-a715-79g-gaming-laptop/p/itm0f412dd7943ad?pid=COMHD5WWFAGFXGN2&marketplace=FLIPKART" target="_blank" rel="noopener">🛒 View on Flipkart</a>
+      <a class="btn btn-ghost" href="#compare">Compare all 17 ↓</a>
+    </div>
   </div>
-  <div class="top-picks">
+
+  <div class="stats">
+    <div class="stat"><b>17</b><span>listings compared</span></div>
+    <div class="stat"><b>5</b><span>with dedicated RTX GPUs</span></div>
+    <div class="stat"><b>₹56,990</b><span>cheapest — Aspire 14 AI</span></div>
+    <div class="stat"><b>11</b><span>direct Flipkart links</span></div>
+  </div>
+
+  <div class="picks">
     <div class="pick">
-      <div class="medal">🥇</div><div class="tag">Overall Winner</div>
-      <h3>Acer Aspire 7 A715-79G (Intel Core i7-13620H · RTX 3050 6GB · 144Hz)</h3>
-      <div class="spec-line">10C/16T · 15.6″ FHD 144Hz · 1.99 kg · 16GB/512GB</div>
+      <div class="medal">🏆</div><span class="tag">Best overall</span>
+      <h3>Acer Aspire 7 A715-79G (Intel Core i7-13620H)</h3>
+      <div class="spec-line">RTX 3050 6GB · 144Hz · 10C/16T · 1.99 kg</div>
       <div class="price">₹64,809</div>
-      <p>The only listing strong at all five of your jobs — 10-core CPU, real RTX (CUDA/NVENC for editing), 144Hz — for less than every iGPU-only performance pick. <a href="https://www.flipkart.com/acer-aspire-7-intel-core-i7-13th-gen-13620h-16-gb-512-gb-ssd-windows-11-home-6-graphics-nvidia-geforce-rtx-3050-144-hz-a715-79g-gaming-laptop/p/itm0f412dd7943ad?pid=COMHD5WWFAGFXGN2&marketplace=FLIPKART" target="_blank" rel="noopener">🛒 listing</a></p>
+      <p>Strongest chip of the trio at the lowest price. Office not stated — verify.</p>
+      <a href="https://www.flipkart.com/acer-aspire-7-intel-core-i7-13th-gen-13620h-16-gb-512-gb-ssd-windows-11-home-6-graphics-nvidia-geforce-rtx-3050-144-hz-a715-79g-gaming-laptop/p/itm0f412dd7943ad?pid=COMHD5WWFAGFXGN2&marketplace=FLIPKART" target="_blank" rel="noopener">🛒 View listing →</a>
     </div>
     <div class="pick">
-      <div class="medal">🥈</div><div class="tag">Value dGPU</div>
-      <h3>MSI Cyborg 15 A12UCX-264IN (Intel Core i5-12450H · RTX 2050 45W · 144Hz)</h3>
-      <div class="spec-line">8C/12T · 15.6″ FHD 144Hz · 1.98 kg · 16GB/512GB</div>
+      <div class="medal">💰</div><span class="tag">Best budget dGPU</span>
+      <h3>MSI Cyborg 15 A12UCX-264IN (Intel Core i5-12450H)</h3>
+      <div class="spec-line">RTX 2050 45W · 144Hz · 1.98 kg</div>
       <div class="price">₹60,059</div>
-      <p>Cheapest real-GPU machine — DLSS + NVENC included. ₹4,750 less than the Aspire 7 i7 buys you clearly less; that is the whole trade. <a href="https://www.flipkart.com/msi-cyborg-15-intel-core-i5-12th-gen-12450h-16-gb-512-gb-ssd-windows-11-home-4-graphics-nvidia-geforce-rtx-2050-144-hz-45-w-a12ucx-264in-gaming-laptop/p/itme528726b3eb8b?pid=COMGZW35W3DSJADN&marketplace=FLIPKART" target="_blank" rel="noopener">🛒 listing</a></p>
+      <p>Cheapest real graphics card on the page — the pick if ₹60K is a hard cap.</p>
+      <a href="https://www.flipkart.com/msi-cyborg-15-intel-core-i5-12th-gen-12450h-16-gb-512-gb-ssd-windows-11-home-4-graphics-nvidia-geforce-rtx-2050-144-hz-45-w-a12ucx-264in-gaming-laptop/p/itme528726b3eb8b?pid=COMGZW35W3DSJADN&marketplace=FLIPKART" target="_blank" rel="noopener">🛒 View listing →</a>
     </div>
     <div class="pick">
-      <div class="medal">🥉</div><div class="tag">Display & Battery</div>
-      <h3>Motorola Motobook 60 (Intel Core 5 210H · 14″ OLED 2.8K 120Hz)</h3>
-      <div class="spec-line">60Wh · 1.39 kg · 4.4★ (3.8K+ reviews)</div>
-      <div class="price">₹63,990</div>
-      <p>Best screen and biggest battery of all 18 — the media/campus pick if a dGPU is not needed.</p>
+      <div class="medal">🖥️</div><span class="tag">Best display &amp; battery</span>
+      <h3>Motorola Motobook 60 (Intel Core 5 210H)</h3>
+      <div class="spec-line">14″ OLED · full metal · 60Wh · 1.39 kg</div>
+      <div class="price">₹62,990</div>
+      <p>Best screen and biggest battery of all 17 — now ₹1,000 cheaper. 4.4★ from 3.8K+ buyers.</p>
+      <a href="https://www.flipkart.com/motorola-motobook-60-full-metal-wuxga-oled-i5-14th-gen-intel-core-5-210h-16-gb-512-gb-ssd-windows-11-home-14irh10r-thin-light-laptop/p/itm2928b4d532ca8?pid=COMHQ6ZJ2CUUHN3D&marketplace=FLIPKART" target="_blank" rel="noopener">🛒 View listing →</a>
     </div>
     <div class="pick">
-      <div class="medal">4️⃣</div><div class="tag">Safe All-Rounder</div>
-      <h3>Lenovo IdeaPad Slim 3 83K100C6IN (Intel Core i5-13420H)</h3>
-      <div class="spec-line">15.3″ WUXGA · 50Wh · 16GB DDR5 (free slot) · 1-yr on-site</div>
-      <div class="price">₹66,015</div>
-      <p>Runs everything x86, upgradable to 24/40GB RAM, Office Home 2024, on-site warranty. Zero surprises.</p>
+      <div class="medal">🛡️</div><span class="tag">Safest all-rounder</span>
+      <h3>Lenovo IdeaPad Slim 3 15IRH10 (83K100C6IN)</h3>
+      <div class="spec-line">15.3″ WUXGA · 50Wh · 1Yr ADP · upgradable DDR5</div>
+      <div class="price">₹69,000</div>
+      <p>Runs every x86 app, free RAM slot, 1Yr ADP included in this listing.</p>
+      <a href="https://www.flipkart.com/lenovo-ideapad-slim-3-wuxga-ips-1yr-adp-intel-core-i5-13th-gen-13420h-16-gb-512-gb-ssd-windows-11-home-15irh10-thin-light-laptop/p/itme80ce152342ee?pid=COMHA9FK5XHYYAZJ&marketplace=FLIPKART" target="_blank" rel="noopener">🛒 View listing →</a>
     </div>
     <div class="pick">
-      <div class="medal">5️⃣</div><div class="tag">Budget Wildcard</div>
-      <h3>Acer Aspire 14 AI A14-11M (Snapdragon X · Adreno X1-45)</h3>
-      <div class="spec-line">14″ WUXGA · 1.26 kg · Office 2024 + M365 · 4.4★ (205)</div>
+      <div class="medal">🎯</div><span class="tag">Lightest &amp; cheapest</span>
+      <h3>Acer Aspire 14 AI A14-11M (Snapdragon X)</h3>
+      <div class="spec-line">Adreno X1-45 · 1.26 kg · Office 2024 + M365</div>
       <div class="price">₹56,990</div>
-      <p>Cheapest, lightest, longest battery — gated on Windows-on-Arm app/game compatibility.</p>
+      <p>All-day battery in 1.26 kg — run the Windows-on-Arm app check first.</p>
+      <a href="https://www.flipkart.com/acer-aspire-14-ai-office-2024-m365-basic-snapdragon-x-16-gb-512-gb-ssd-windows-11-home-a14-11m-thin-light-laptop/p/itm08730687919bb?pid=COMHFSHUTDFXBZKR&marketplace=FLIPKART" target="_blank" rel="noopener">🛒 View listing →</a>
     </div>
   </div>
 </header>
 
-<!-- ================= PODIUM ================= -->
-<section id="podium" class="wrap">
+<!-- ================= 01 SHORTLIST ================= -->
+<section id="shortlist" class="wrap">
   <div class="section-head">
-    <h2>⚔️ <em>The Podium</em> — top 5 head-to-head, verified specs</h2>
-    <p>Legend: ✅ confirmed from your listings/research · ⚠️ inferred from model family (verify) · 🔍 unknown.</p>
+    <span class="eyebrow">01 · Shortlist</span>
+    <h2>⚔️ <em>My top 6</em>, in My order</h2>
+    <p>Dedicated-GPU machines first, ordered by how well the package justifies its price — then the best integrated-GPU value.</p>
   </div>
-  <div class="f-scroll">
-    <table class="f3">
-      <thead><tr><th></th><th>🥇 Acer Aspire 7 A715-79G (i7-13620H)</th><th>🥈 MSI Cyborg 15 A12UCX-264IN</th><th>🥉 Motorola Motobook 60</th><th>4️⃣ Lenovo IdeaPad Slim 3 83K100C6IN</th><th>5️⃣ Acer Aspire 14 AI A14-11M</th></tr></thead>
-      <tbody>
-        <tr><td>Price</td><td>₹64,809</td><td>₹60,059</td><td>₹63,990</td><td>₹66,015</td><td class="win">₹56,990</td></tr>
-        <tr><td>CPU</td><td class="win">i7-13620H · 10C/16T ✅</td><td>i5-12450H · 8C/12T ✅</td><td>Core 5 210H · 8C/12T ✅</td><td>i5-13420H · 8C/12T ✅</td><td>Snapdragon X + 45-TOPS NPU ✅</td></tr>
-        <tr><td>Graphics</td><td class="win">RTX 3050 6GB (dedicated) ✅</td><td>RTX 2050 4GB @ 45W (dedicated) ✅</td><td>Intel UHD ✅</td><td>Intel UHD ✅</td><td>Adreno X1-45 (Arm) ✅</td></tr>
-        <tr><td>Display</td><td class="win">15.6″ FHD · 144Hz ✅</td><td>15.6″ FHD · 144Hz ✅</td><td class="win">14″ OLED 2880×1800 · 120Hz ✅</td><td>15.3″ WUXGA IPS ✅</td><td>14″ WUXGA IPS ✅</td></tr>
-        <tr><td>RAM / SSD</td><td>16GB / 512GB (type 🔍)</td><td>16GB / 512GB (type 🔍)</td><td>16GB / 512GB (type 🔍)</td><td class="win">16GB DDR5 (8+8, free slot) ✅ / 512GB Gen4 ✅</td><td>16GB LPDDR5X / 512GB ✅</td></tr>
-        <tr><td>Battery · weight</td><td>Wh 🔍 · 1.99 kg ✅</td><td>≈53.5Wh ⚠️ · 1.98 kg ✅</td><td class="win">60Wh ✅ · 1.39 kg ✅</td><td>50Wh ✅ · 1.6 kg ✅</td><td class="win">All-day Arm · 1.26 kg ✅</td></tr>
-        <tr><td>Bundle</td><td>Win 11 Home · Office 🔍 (not in title)</td><td>Win 11 Home · Office 🔍</td><td>Win 11 · Office 🔍</td><td class="win">Win 11 + Office Home 2024 ✅ + 1-yr on-site ✅</td><td>Win 11 + Office 2024 + M365 ✅ + Trust Shield ✅</td></tr>
-        <tr><td>The catch</td><td>Gaming-class weight/battery</td><td>2050 is entry-tier dGPU</td><td>Weakest GPU of the five</td><td>UHD gaming only (low)</td><td class="warn">Arm blocks many games & some pro apps</td></tr>
-      </tbody>
-    </table>
+
+  <ol class="sl-list">
+    <li class="sl-item v-buy">
+      <div class="sl-rank">1</div>
+      <div>
+        <div class="sl-top"><h3>Acer Aspire 7 A715-79G — Intel Core i7-13620H</h3><span class="pill buy">Buy</span></div>
+        <div class="sl-variant">RTX 3050 6GB · 144Hz · 10C/16T · 1.99 kg</div>
+        <p class="sl-why">Strongest Aspire 7 chip AND the cheapest variant — 6GB card and 144Hz included. The default buy.</p>
+        <div class="sl-links"><a class="btn btn-primary btn-sm" href="https://www.flipkart.com/acer-aspire-7-intel-core-i7-13th-gen-13620h-16-gb-512-gb-ssd-windows-11-home-6-graphics-nvidia-geforce-rtx-3050-144-hz-a715-79g-gaming-laptop/p/itm0f412dd7943ad?pid=COMHD5WWFAGFXGN2&marketplace=FLIPKART" target="_blank" rel="noopener">🛒 View listing</a></div>
+      </div>
+      <div class="sl-price">₹64,809<small>best variant price</small></div>
+    </li>
+
+    <li class="sl-item v-buy">
+      <div class="sl-rank">2</div>
+      <div>
+        <div class="sl-top"><h3>Acer Aspire 7 A715-79G — Intel Core 7 240H</h3><span class="pill buy">Buy</span></div>
+        <div class="sl-variant">RTX 3050 6GB · 8C/12T · 1.99 kg</div>
+        <p class="sl-why">My #2 — 6GB card and a newer CPU. Worth it only if the i7 is out of stock: ₹10,640 more for a weaker chip. The “i7 14th Gen” badge is marketing.</p>
+        <div class="sl-links"><a class="btn btn-primary btn-sm" href="https://www.flipkart.com/acer-aspire-7-i7-14th-gen-intel-core-240h-16-gb-512-gb-ssd-windows-11-home-6-graphics-nvidia-geforce-rtx-3050-a715-79g-gaming-laptop/p/itm29d23f46bd0b7?pid=COMHGEUYCPDCFWNN&marketplace=FLIPKART" target="_blank" rel="noopener">🛒 View listing</a></div>
+      </div>
+      <div class="sl-price">₹75,449<small>only if #1 is gone</small></div>
+    </li>
+
+    <li class="sl-item v-buy">
+      <div class="sl-rank">3</div>
+      <div>
+        <div class="sl-top"><h3>Acer Aspire 7 A715-79G — Intel Core 5 210H</h3><span class="pill buy">Buy</span></div>
+        <div class="sl-variant">RTX 3050 4GB · 8C/12T · 1.99 kg</div>
+        <p class="sl-why">My #3 — same chassis with the 4GB card. Costs exactly the same ₹69,000 as the Slim 3 15IRH10 (#7): RTX 3050 vs integrated graphics is the entire difference.</p>
+        <div class="sl-links"><a class="btn btn-primary btn-sm" href="https://www.flipkart.com/acer-aspire-7-intel-core-5-210h-16-gb-512-gb-ssd-windows-11-home-4-graphics-nvidia-geforce-rtx-3050-a715-79g-gaming-laptop/p/itm16e348955bedb?pid=COMHPE4FG5QGHGZH&marketplace=FLIPKART" target="_blank" rel="noopener">🛒 View listing</a></div>
+      </div>
+      <div class="sl-price">₹69,000<small>mid fallback</small></div>
+    </li>
+
+    <li class="sl-item v-buy">
+      <div class="sl-rank">4</div>
+      <div>
+        <div class="sl-top"><h3>MSI Cyborg 15 A12UCX-264IN — Intel Core i5-12450H</h3><span class="pill buy">Buy</span></div>
+        <div class="sl-variant">RTX 2050 45W · 144Hz · 8C/12T · 1.98 kg</div>
+        <p class="sl-why">Cheapest real GPU on the page — DLSS and NVENC included. The value pick if ₹60K is the hard cap.</p>
+        <div class="sl-links"><a class="btn btn-primary btn-sm" href="https://www.flipkart.com/msi-cyborg-15-intel-core-i5-12th-gen-12450h-16-gb-512-gb-ssd-windows-11-home-4-graphics-nvidia-geforce-rtx-2050-144-hz-45-w-a12ucx-264in-gaming-laptop/p/itme528726b3eb8b?pid=COMGZW35W3DSJADN&marketplace=FLIPKART" target="_blank" rel="noopener">🛒 View listing</a></div>
+      </div>
+      <div class="sl-price">₹60,059<small>cheapest dGPU</small></div>
+    </li>
+
+    <li class="sl-item v-consider">
+      <div class="sl-rank">5</div>
+      <div>
+        <div class="sl-top"><h3>Lenovo IdeaPad Gaming 3 15IHU6D1 — Intel Core i5-11300H</h3><span class="pill consider">Consider</span></div>
+        <div class="sl-variant">RTX 3050 4GB · 4C/8T · 2.25 kg · MS Office</div>
+        <p class="sl-why">A real 3050 plus bundled Office — but the 4-core 11th-gen CPU is the weakest H-chip here, at ₹6,191 over the superior Aspire 7 i7.</p>
+        <div class="sl-links"><a class="btn btn-primary btn-sm" href="https://www.flipkart.com/lenovo-ideapad-gaming-3-intel-core-i5-11th-gen-11300h-16-gb-512-gb-ssd-windows-11-home-4-graphics-nvidia-geforce-rtx-3050-15ihu6-15ihu6d1-laptop/p/itmc4612af4ab758?pid=COMGKC6YAWGQPZZY&marketplace=FLIPKART" target="_blank" rel="noopener">🛒 View listing</a></div>
+      </div>
+      <div class="sl-price">₹71,000<small>niche: Lenovo + Office</small></div>
+    </li>
+
+    <li class="sl-item v-buy">
+      <div class="sl-rank">6</div>
+      <div>
+        <div class="sl-top"><h3>Motorola Motobook 60 — Intel Core 5 210H</h3><span class="pill buy">Buy</span></div>
+        <div class="sl-variant">14IRH10R · 14″ OLED · full metal · 60Wh · 1.39 kg</div>
+        <p class="sl-why">The best of the rest — now ₹1,000 cheaper (₹62,990). OLED panel, biggest battery of all 17, and 4.4★ from 3.8K+ buyers. Note: the listing slug says WUXGA OLED — confirm resolution &amp; refresh rate on the live page.</p>
+        <div class="sl-links"><a class="btn btn-primary btn-sm" href="https://www.flipkart.com/motorola-motobook-60-full-metal-wuxga-oled-i5-14th-gen-intel-core-5-210h-16-gb-512-gb-ssd-windows-11-home-14irh10r-thin-light-laptop/p/itm2928b4d532ca8?pid=COMHQ6ZJ2CUUHN3D&marketplace=FLIPKART" target="_blank" rel="noopener">🛒 View listing</a></div>
+      </div>
+      <div class="sl-price">₹62,990<small>↓ ₹1,000 · best iGPU value</small></div>
+    </li>
+  </ol>
+
+  <div class="callout">
+    <h3>🔓 Ranking logic — this round's movers</h3>
+    <p>Order by <b>how well the total package justifies its price</b>. Changes this round: <b>Motobook 60 ↓₹1,000</b> → locks #6. The two Slim 3 i5 listings <b>merged into one at ₹69,000 with 1Yr ADP</b> (My new link's slug reads 15IRH10 — confirming 83K100C6IN and 15IRH10 are the same machine). <b>Aspire Lite i7 ↑₹7,334 to ₹79,999</b> → demoted from Consider to Skip: it now costs more than every RTX 3050 machine here while carrying only integrated graphics — ₹15,190 over the Aspire 7 i7 for 2 fewer cores and a far weaker GPU.</p>
   </div>
 
   <div class="callout">
-    <h3>🔄 Aspire 7 A715-79G availability chain (your rule, not ranked as rivals)</h3>
-    <p><b>① i7-13620H + RTX 3050 6GB + 144Hz @ ₹64,809</b> — buy if in stock → <b>② Intel Core 5 210H + RTX 3050 4GB</b> (price not in your paste — check listing) → <b>③ Intel Core 7 240H + RTX 3050 6GB</b> (only if ① and ② are gone). <b>Never pay more than ₹64,809 for a fallback.</b> Note: the "i7 14th Gen" label on ③ is marketing — the Core 7 240H is an 8C/12T part, not a true 14th-gen i7 (verify on Intel ARK).</p>
-  </div>
-
-  <div class="decision">
-    <div class="dcard"><h4>🎮 Gaming + editing priority</h4><p><b>Acer Aspire 7 A715-79G (i7-13620H) @ ₹64,809.</b> Hard ₹60K cap → MSI Cyborg 15 A12UCX-264IN. Lenovo IdeaPad Gaming 3 15IHU6D1 only if you need Lenovo + bundled Office and accept a 4-core CPU.</p></div>
-    <div class="dcard"><h4>🎬 Media & campus life priority</h4><p><b>Motorola Motobook 60</b> — OLED 120Hz + 60Wh + 1.39 kg. Editing exports slower than any RTX machine; photo/light-video work is its sweet spot.</p></div>
-    <div class="dcard"><h4>🛡️ Zero-surprise priority</h4><p><b>Lenovo IdeaPad Slim 3 83K100C6IN</b> — every x86 app/game runs (low settings), upgradable RAM, on-site warranty, Office Home 2024.</p></div>
-    <div class="dcard"><h4>💰 Budget priority</h4><p><b>Acer Aspire 14 AI A14-11M (₹56,990)</b> or <b>Lenovo IdeaPad Slim 3 15Q8X10 (₹63,089, 1TB + 1Yr ADP)</b> — both after passing the Windows-on-Arm app check for your course software.</p></div>
+    <h3>🔄 Aspire 7 A715-79G — one chassis, three prices</h3>
+    <p><b>i7-13620H @ ₹64,809</b> (strongest chip + 6GB + 144Hz — cheapest of the three: the default) → <b>Core 7 240H @ ₹75,449</b> (6GB, +₹10,640 — only if the i7 sells out) → <b>Core 5 210H @ ₹69,000</b> (4GB, the mid path). Remember: the Core 7's “i7 14th Gen” sticker is marketing — the 13th-gen i7-13620H has 10 cores to its 8.</p>
   </div>
 </section>
 
-<!-- ================= COMPARE ================= -->
+<!-- ================= 02 COMPARE ================= -->
 <section id="compare" class="wrap">
   <div class="section-head">
-    <h2>📊 Full <em>Comparison</em> — all 18 listings, full names + links</h2>
-    <p>Rows 16–18 are appended <b>without ranking</b> (no prices available). 🛒 listing = your exact Flipkart product · 🔍 specs = exact-model search. Estimated specs are marked ⚠️ — verify them on the live page.</p>
+    <span class="eyebrow">02 · Full comparison</span>
+    <h2>📊 All <em>17 listings</em>, grouped by verdict</h2>
+    <p>Default view: ✅ Buy first, then 🤔 Consider, then ❌ Skip. Click any bold header to re-sort — <b>↺ Group by verdict</b> brings this view back. 🛒 listing = My exact Flipkart product; 🔍 specs = exact-model search.</p>
   </div>
-  <div class="table-tools">
-    <label for="budget">💰 Budget filter</label>
+  <div class="tools">
+    <label for="budget">💰 Budget</label>
     <input type="range" id="budget" min="56000" max="85000" step="500" value="85000">
-    <span id="budgetLabel">No limit — 15 priced + 3 unpriced</span>
-    <span class="hint">💡 Ranking rule (v3): conservative specs only. Lenovo IdeaPad Slim 3 15AHP10 rises to ~#5 only if its listing confirms Ryzen 7 7735HS + Radeon 680M.</span>
+    <span id="budgetLabel">No limit — showing all 17 listings</span>
+    <button class="btn btn-ghost btn-sm" id="resetSort">↺ Group by verdict</button>
+    <span class="hint">💡 Colored chips show this round's price/link changes. The unpriced Slim 3 Gen 8 hides automatically when a budget is set.</span>
   </div>
   <div class="table-scroll">
     <table class="cmp" id="compareTable">
       <thead>
         <tr>
-          <th data-sort="rank">Rank <span class="arrow"></span></th>
+          <th data-sort="rank" tabindex="0">Rank <span class="arrow"></span></th>
           <th>Laptop (full name)</th>
           <th>CPU</th>
           <th>Graphics</th>
           <th>RAM / SSD</th>
           <th>Display</th>
           <th>Battery · Weight</th>
-          <th data-sort="rating">Rating <span class="arrow"></span></th>
-          <th data-sort="price">Price <span class="arrow"></span></th>
+          <th data-sort="rating" tabindex="0">Rating <span class="arrow"></span></th>
+          <th data-sort="price" tabindex="0">Price <span class="arrow"></span></th>
           <th>Verdict</th>
         </tr>
       </thead>
       <tbody></tbody>
     </table>
   </div>
+  <p class="tfoot-note">📷 Legend: ✅ confirmed from My listings/research · ⚠️ inferred from the model family (verify) · 🔍 unknown — check the live listing. Lenovo IdeaPad Slim 3 Gen 8 stays unranked until its listing shows a price.</p>
 </section>
 
-<!-- ================= RANKINGS ================= -->
-<section id="rankings" class="wrap">
-  <div class="section-head">
-    <h2>🏆 <em>Rankings</em> — by preference (priced listings only)</h2>
-    <p>All four lists are built on verified/conservative specs. Unverified promises (like the Slim 3 15AHP10's possible 680M) earn a conditional note, not a rank boost.</p>
-  </div>
-  <div class="tabs">
-    <button class="tab-btn active" data-tab="r-overall">🏆 Overall</button>
-    <button class="tab-btn" data-tab="r-pgcd">💰🎮 Price + Gaming + Coding + Display</button>
-    <button class="tab-btn" data-tab="r-cgd">⌨️🎮 Coding + Gaming + Display</button>
-    <button class="tab-btn" data-tab="r-pc">💰⌨️ Price + Coding</button>
-  </div>
-  <div id="r-overall" class="ranking-panel active"><ol class="rank-list"></ol></div>
-  <div id="r-pgcd" class="ranking-panel"><ol class="rank-list"></ol></div>
-  <div id="r-cgd" class="ranking-panel"><ol class="rank-list"></ol></div>
-  <div id="r-pc" class="ranking-panel"><ol class="rank-list"></ol></div>
-
-  <div class="callout">
-    <h3>🚫 Not ranked — no price available (send prices and I will rank them)</h3>
-    <p><b>Acer Aspire 7 A715-79G (Intel Core 5 210H · RTX 3050 4GB)</b> — fallback #1 · <b>Acer Aspire 7 A715-79G (Intel Core 7 240H · RTX 3050 6GB)</b> — fallback #2 · <b>Lenovo IdeaPad Slim 3 Gen 8 (Intel Core i5-12450H)</b> — unpriced listing. These appear unranked at the bottom of the comparison table and inside the availability chain above. Your message did not include prices for these three — paste them anytime and they join the rankings.</p>
-  </div>
-</section>
-
-<!-- ================= USE-CASE ================= -->
+<!-- ================= 03 USE-CASE ================= -->
 <section id="usecase" class="wrap">
   <div class="section-head">
-    <h2>🎯 <em>Use-Case Fit</em> Matrix — all 18, one clean row each</h2>
+    <span class="eyebrow">03 · Use-case fit</span>
+    <h2>🎯 <em>Fit Matrix</em> — how each one handles college life</h2>
     <p>✅✅ excellent · ✅ good · ⚠️ conditional · 😐 passable · ❌ weak.</p>
   </div>
+  <p class="scroll-hint">↔ Swipe the table horizontally</p>
   <div class="matrix-scroll">
     <table class="matrix">
       <thead><tr><th>Laptop (full name)</th><th>Coding</th><th>Video Editing</th><th>Gaming</th><th>Portability</th><th>College Life</th></tr></thead>
       <tbody>
-        <tr><td>Acer Aspire 7 A715-79G (i7-13620H · RTX 3050 6GB) 🏆</td><td>✅✅ 10C/16T</td><td>✅✅ CUDA + NVENC</td><td>✅✅ RTX 3050</td><td>❌ 1.99 kg</td><td>✅ Office 🔍</td></tr>
-        <tr><td>Acer Aspire 7 A715-79G (Core 5 210H · RTX 3050 4GB) 🔄</td><td>✅ 8C/12T</td><td>✅✅</td><td>✅✅</td><td>❌ 1.99 kg</td><td>✅</td></tr>
-        <tr><td>Acer Aspire 7 A715-79G (Core 7 240H · RTX 3050 6GB) 🔄</td><td>✅ 8C/12T</td><td>✅✅</td><td>✅✅</td><td>❌ 1.99 kg</td><td>✅</td></tr>
-        <tr><td>MSI Cyborg 15 A12UCX-264IN (i5-12450H · RTX 2050)</td><td>✅ 8C/12T</td><td>✅ RTX + NVENC</td><td>✅ dGPU + DLSS</td><td>❌ 1.98 kg</td><td>✅</td></tr>
-        <tr><td>Lenovo IdeaPad Gaming 3 15IHU6D1 (i5-11300H · RTX 3050)</td><td>✅ 4C/8T</td><td>✅✅ RTX 3050</td><td>✅✅</td><td>❌ 2.25 kg</td><td>✅ Office ✓</td></tr>
-        <tr><td>Motorola Motobook 60 (Core 5 210H · OLED)</td><td>✅</td><td>✅✅ OLED 120Hz</td><td>😐 low settings</td><td>✅✅ 1.39 kg · 60Wh</td><td>✅✅</td></tr>
-        <tr><td>Lenovo IdeaPad Slim 3 83K100C6IN (i5-13420H)</td><td>✅ upgradable ⬆</td><td>✅</td><td>😐 low settings</td><td>✅ 1.6 kg · 50Wh</td><td>✅✅ on-site + Office 2024</td></tr>
-        <tr><td>Lenovo IdeaPad Slim 3 15Q8X10 (Snapdragon X · 1TB)</td><td>✅ 1TB</td><td>⚠️ Arm apps</td><td>❌ Arm games</td><td>✅✅ 1.55 kg</td><td>✅✅ 1Yr ADP</td></tr>
-        <tr><td>Acer Aspire 14 AI A14-11M (Snapdragon X)</td><td>✅ native tools</td><td>⚠️ Arm apps</td><td>❌ Arm games</td><td>✅✅ 1.26 kg</td><td>✅✅</td></tr>
-        <tr><td>Acer Aspire Lite (i7-12650H)</td><td>✅✅ 10C/16T</td><td>✅</td><td>😐 UHD 64EU</td><td>😐 1.70 kg</td><td>✅</td></tr>
-        <tr><td>Lenovo IdeaPad Slim 3 15AHP10 (AMD Ryzen 7)</td><td>✅ 8C/16T</td><td>✅ if 680M · ⚠️ if 610M</td><td>✅✅ if 7735HS · 😐 if 7435HS</td><td>✅ 1.59 kg</td><td>✅✅ Office ✓</td></tr>
-        <tr><td>ASUS Vivobook 16 (2025) (i5-13420H)</td><td>✅</td><td>✅✅ 16″</td><td>😐</td><td>❌ bulky</td><td>✅ Office 2024 ✓</td></tr>
-        <tr><td>Lenovo IdeaPad Slim 3 15IRH10 (i5-13420H)</td><td>✅</td><td>✅</td><td>😐</td><td>✅ 1.63 kg</td><td>✅✅ 1Yr ADP</td></tr>
-        <tr><td>Lenovo V14 (2025) (i5-13420H · Win 11 Pro)</td><td>✅</td><td>😐 14″</td><td>😐</td><td>✅ ~1.4 kg</td><td>✅ Win 11 Pro</td></tr>
-        <tr><td>Acer Aspire Lite (i5-13420H)</td><td>✅</td><td>😐</td><td>❌ UHD 48EU</td><td>😐 1.70 kg</td><td>✅</td></tr>
-        <tr><td>Lenovo IdeaPad Slim 5i 15ITL05 (i5-1135G7)</td><td>😐 4C/8T</td><td>😐 MX-class ⚠️</td><td>😐 MX-class ⚠️</td><td>✅ 1.66 kg</td><td>✅ Office ✓</td></tr>
-        <tr><td>Lenovo ThinkBook 16 (Ryzen 5 220)</td><td>✅</td><td>✅ 16″</td><td>⚠️ GPU unknown</td><td>❌</td><td>✅</td></tr>
-        <tr><td>Lenovo IdeaPad Slim 3 Gen 8 (i5-12450H)</td><td>✅</td><td>✅ 300-nit ⚠️</td><td>😐</td><td>✅</td><td>✅</td></tr>
+        <tr><td>1 · Acer Aspire 7 A715-79G (i7-13620H · RTX 3050 6GB)</td><td>✅✅ 10C/16T</td><td>✅✅ CUDA + NVENC</td><td>✅✅ RTX 3050</td><td>❌ 1.99 kg</td><td>✅ Office 🔍</td></tr>
+        <tr><td>2 · Acer Aspire 7 A715-79G (Core 7 240H · RTX 3050 6GB)</td><td>✅ 8C/12T</td><td>✅✅</td><td>✅✅</td><td>❌ 1.99 kg</td><td>✅</td></tr>
+        <tr><td>3 · Acer Aspire 7 A715-79G (Core 5 210H · RTX 3050 4GB)</td><td>✅ 8C/12T</td><td>✅✅</td><td>✅ 4GB VRAM</td><td>❌ 1.99 kg</td><td>✅</td></tr>
+        <tr><td>4 · MSI Cyborg 15 A12UCX-264IN (i5-12450H · RTX 2050)</td><td>✅ 8C/12T</td><td>✅ RTX + NVENC</td><td>✅ dGPU + DLSS</td><td>❌ 1.98 kg</td><td>✅</td></tr>
+        <tr><td>5 · Lenovo IdeaPad Gaming 3 15IHU6D1 (i5-11300H · RTX 3050)</td><td>✅ 4C/8T</td><td>✅✅ RTX 3050</td><td>✅✅</td><td>❌ 2.25 kg</td><td>✅ Office ✓</td></tr>
+        <tr><td>6 · Motorola Motobook 60 (Core 5 210H · OLED)</td><td>✅</td><td>✅✅ OLED</td><td>😐 low settings</td><td>✅✅ 1.39 kg · 60Wh</td><td>✅✅</td></tr>
+        <tr><td>7 · Lenovo IdeaPad Slim 3 15IRH10 (83K100C6IN · i5-13420H)</td><td>✅ upgradable ⬆</td><td>✅</td><td>😐 low settings</td><td>✅ 1.63 kg · 50Wh</td><td>✅✅ 1Yr ADP</td></tr>
+        <tr><td>8 · Acer Aspire 14 AI A14-11M (Snapdragon X)</td><td>✅ native tools</td><td>⚠️ Arm apps</td><td>❌ Arm games</td><td>✅✅ 1.26 kg</td><td>✅✅</td></tr>
+        <tr><td>9 · Lenovo IdeaPad Slim 3 15Q8X10 (Snapdragon X · 1TB)</td><td>✅ 1TB</td><td>⚠️ Arm apps</td><td>❌ Arm games</td><td>✅✅ 1.55 kg</td><td>✅✅ 1Yr ADP</td></tr>
+        <tr><td>10 · ASUS Vivobook 16 X1605VA (i5-13420H)</td><td>✅</td><td>✅✅ 16″</td><td>😐</td><td>❌ bulky</td><td>✅ Office 🔍</td></tr>
+        <tr><td>11 · Lenovo IdeaPad Slim 3 15AHP10 (AMD Ryzen 7)</td><td>✅ 8C/16T</td><td>⚠️ GPU unverified</td><td>⚠️ if 610M · ✅✅ if 680M</td><td>✅ 1.59 kg</td><td>✅✅ Office ✓</td></tr>
+        <tr><td>12 · Acer Aspire Lite AL15-52H (i7-12650H)</td><td>✅✅ 10C/16T</td><td>✅</td><td>😐 UHD 64EU</td><td>😐 1.70 kg</td><td>✅</td></tr>
+        <tr><td>13 · Lenovo V14 (2025) (i5-13420H · Win 11 Pro)</td><td>✅</td><td>😐 14″</td><td>😐</td><td>✅ ~1.4 kg</td><td>✅ Win 11 Pro</td></tr>
+        <tr><td>14 · Acer Aspire Lite (i5-13420H)</td><td>✅</td><td>😐</td><td>❌ UHD 48EU</td><td>😐 1.70 kg</td><td>✅</td></tr>
+        <tr><td>15 · Lenovo IdeaPad Slim 5i 15ITL05 (i5-1135G7)</td><td>😐 4C/8T</td><td>😐 MX-class ⚠️</td><td>😐 MX-class ⚠️</td><td>✅ 1.66 kg</td><td>✅ Office ✓</td></tr>
+        <tr><td>16 · Lenovo ThinkBook 16 (Ryzen 5 220)</td><td>✅</td><td>✅ 16″</td><td>⚠️ GPU unknown</td><td>❌</td><td>✅</td></tr>
+        <tr><td>— · Lenovo IdeaPad Slim 3 Gen 8 (i5-12450H)</td><td>✅</td><td>✅ 300-nit ⚠️</td><td>😐</td><td>✅</td><td>✅</td></tr>
       </tbody>
     </table>
   </div>
 </section>
 
-<!-- ================= CHIP GUIDE ================= -->
+<!-- ================= 04 CHIP GUIDE ================= -->
 <section id="cpu" class="wrap">
   <div class="section-head">
-    <h2>🧠 <em>Chip & GPU Guide</em> — corrected</h2>
-    <p>Two naming traps live in these listings. Both are flagged below.</p>
+    <span class="eyebrow">04 · Chip &amp; GPU guide</span>
+    <h2>🧠 <em>Silicon, honestly</em> — two naming traps inside these listings</h2>
+    <p>Dedicated GPUs dominate gaming and editing; integrated ones win on battery and weight. Know which is which before paying.</p>
   </div>
   <div class="cpu-grid">
     <div class="cpu-card">
-      <h3>The Aspire 7 CPUs — and the "i7 14th Gen" trap</h3>
+      <h3>The Aspire 7 CPUs — with My prices</h3>
       <table>
-        <tr><td>i7-13620H</td><td>10C (6P+4E) / 16T ✅ — <b>the strongest Aspire 7 chip here</b></td></tr>
-        <tr><td>Core 5 210H</td><td>8C (4P+4E) / 12T ✅ — same layout as the i5-13420H (rebrand tier)</td></tr>
-        <tr><td>Core 7 240H</td><td>8C (4P+4E) / <b>12T</b> ✅ — "i7 14th Gen" is Acer marketing: a Core Series-1 part, weaker than the 13620H. Verify on Intel ARK.</td></tr>
+        <tr><td>i7-13620H</td><td>10C (6P+4E) / 16T — <b>strongest AND cheapest</b> → the default at ₹64,809</td></tr>
+        <tr><td>Core 7 240H</td><td>8C / 12T — “i7 14th Gen” is a sticker, not a stronger chip → ₹75,449</td></tr>
+        <tr><td>Core 5 210H</td><td>8C / 12T — same layout as the i5-13420H → ₹69,000 with the 4GB card</td></tr>
       </table>
-      <h3 style="margin-top:1.1rem">The Slim 3 15AHP10 trap</h3>
+      <h3 style="margin-top:1.05rem">The Slim 3 15AHP10 trap</h3>
       <table>
-        <tr><td>Ryzen 7 7735HS</td><td>8C/16T + <b>Radeon 680M</b> → real iGPU gaming. Unconfirmed for this listing.</td></tr>
-        <tr><td>Ryzen 7 7435HS</td><td>8C/16T + Radeon 610M ≈ Intel UHD class → <b>likely for this chassis — the conservative case v3 ranks on</b>.</td></tr>
+        <tr><td>Ryzen 7 7735HS</td><td>8C/16T + Radeon 680M → real iGPU gaming. Unconfirmed for this listing.</td></tr>
+        <tr><td>Ryzen 7 7435HS</td><td>8C/16T + Radeon 610M ≈ Intel UHD class → the likely case the ranking assumes.</td></tr>
       </table>
     </div>
     <div class="cpu-card">
@@ -375,79 +503,66 @@
       <ul>
         <li class="ok">✅ Native &amp; fast: VS Code, Visual Studio, Python, Node.js, Java, Android Studio, browsers, MS Office</li>
         <li class="mix">⚠️ Emulated via Prism — usually fine, occasionally slow: most other x86 apps</li>
-        <li class="bad">❌ Often blocked: anti-cheat games (Valorant), Docker x86, some pro video tools, older drivers/utilities</li>
+        <li class="bad">❌ Often blocked: anti-cheat games (Valorant), Docker x86, some pro video tools, older utilities &amp; drivers</li>
       </ul>
-      <p style="margin-top:.7rem;color:var(--muted);font-size:.82rem">Applies to Acer Aspire 14 AI A14-11M and Lenovo IdeaPad Slim 3 15Q8X10. Verify your course software + games before choosing Arm — regardless of price.</p>
-      <h3 style="margin-top:1.1rem">Dedicated vs integrated — the honest gap</h3>
+      <p style="margin-top:.7rem;color:var(--muted);font-size:.82rem">Applies to the Acer Aspire 14 AI A14-11M and Lenovo IdeaPad Slim 3 15Q8X10. Verify My course software and games before choosing Arm.</p>
+      <h3 style="margin-top:1.05rem">Dedicated vs integrated</h3>
       <ul>
         <li class="ok">RTX tier (5 listings): real 1080p gaming + CUDA/NVENC editing. Costs: weight, battery, usually no Office bundle.</li>
-        <li class="mix">iGPU tier: fine for college/coding; esports at low settings at best.</li>
+        <li class="mix">iGPU tier: fine for college and coding; esports at low settings at best.</li>
       </ul>
     </div>
   </div>
   <div class="lesson">
-    <h3>⚡ Graphics ladder — corrected (v3)</h3>
+    <h3>⚡ Graphics ladder — top to bottom</h3>
     <div class="ladder">
-      <div class="step"><b>🥇 RTX 3050 6GB</b><span>Acer Aspire 7 A715-79G i7-13620H &amp; Core 7 240H — 1080p AAA high, esports 144Hz-ready</span></div>
-      <div class="step"><b>🥈 RTX 3050 4GB</b><span>Lenovo IdeaPad Gaming 3 15IHU6D1 · Aspire 7 Core 5 210H — 1080p AAA medium-high</span></div>
-      <div class="step"><b>🥉 RTX 2050 45W</b><span>MSI Cyborg 15 — generally ahead of the 680M in raster, clearly ahead with DLSS</span></div>
-      <div class="step"><b>4th Radeon 680M</b><span>Lenovo IdeaPad Slim 3 15AHP10 — only if 7735HS is confirmed on the listing</span></div>
-      <div class="step"><b>5th Adreno X1-45</b><span>Acer Aspire 14 AI A14-11M — fast, but Arm blocks many games</span></div>
-      <div class="step"><b>6th Intel UHD 64EU</b><span>Acer Aspire Lite (i7-12650H)</span></div>
+      <div class="step"><b>🥇 RTX 3050 6GB</b><span>Aspire 7 (i7-13620H &amp; Core 7 240H) — 1080p AAA high, esports 144Hz-ready</span></div>
+      <div class="step"><b>🥈 RTX 3050 4GB</b><span>Aspire 7 (Core 5 210H) · IdeaPad Gaming 3 — 1080p AAA medium-high</span></div>
+      <div class="step"><b>🥉 RTX 2050 45W</b><span>MSI Cyborg 15 — ahead of every iGPU here, clearly so with DLSS</span></div>
+      <div class="step"><b>4th Radeon 680M</b><span>Slim 3 15AHP10 — only if the listing confirms 7735HS</span></div>
+      <div class="step"><b>5th Adreno X1-45</b><span>Aspire 14 AI · Slim 3 15Q8X10 — fast, but Arm blocks many games</span></div>
+      <div class="step"><b>6th Intel UHD 64EU</b><span>Acer Aspire Lite AL15-52H (i7-12650H)</span></div>
       <div class="step"><b>7th Intel UHD 48EU</b><span>i5-13420H / Core 5 210H / i5-12450H machines</span></div>
-      <div class="step"><b>⚠️ MX-class 2GB</b><span>Lenovo IdeaPad Slim 5i 15ITL05 — model unverified; if MX450/550 it sits modestly above UHD 48EU</span></div>
+      <div class="step"><b>⚠️ MX-class 2GB</b><span>Slim 5i 15ITL05 — model unverified; if MX450/550 it sits modestly above the 48EU tier</span></div>
       <div class="step"><b>⚠️ TRAP Radeon 610M</b><span>If Slim 3 15AHP10 says 7435HS — UHD-class, and ₹75,515 is too much for it</span></div>
     </div>
   </div>
 </section>
 
-<!-- ================= CHECKLIST ================= -->
+<!-- ================= 05 CHECKLIST ================= -->
 <section id="checklist" class="wrap">
   <div class="section-head">
-    <h2>✅ <em>Verify before you buy</em> — strict evidence legend</h2>
-    <p>Nothing inferred from model families is presented as confirmed.</p>
-  </div>
-  <div class="legend">
-    <span class="lg-ok">✅ CONFIRMED — from your listings/research</span>
-    <span class="lg-inf">⚠️ INFERRED — typical for this model family, verify</span>
-    <span class="lg-un">🔍 UNKNOWN — must check the live listing</span>
+    <span class="eyebrow">05 · Pre-buy checklist</span>
+    <h2>✅ <em>Verify before you pay</em></h2>
+    <p>Nothing inferred from model families is presented as confirmed. Green = settled by My research · amber = inferred · grey = unknown.</p>
   </div>
   <div class="checks">
-    <div class="check"><span class="stamp ok">✅ CONFIRMED</span><h4><span>🧩</span>RAM type &amp; slots</h4><p>Lenovo IdeaPad Slim 3 83K100C6IN: 16GB DDR5 = 8GB soldered + 8GB module (free slot). Acer Aspire Lite (i5): LPDDR5 onboard. Slim 3 Gen 8: soldered. Everything else: 🔍.</p></div>
-    <div class="check"><span class="stamp ok">✅ CONFIRMED</span><h4><span>🔋</span>Battery (verified only)</h4><p>50Wh — Slim 3 83K100C6IN &amp; 15IRH10 · 60Wh — Motobook 60. ⚠️ Inferred (verify): ≈53.5Wh Cyborg 15, 45Wh Gaming 3, 54Wh Aspire Lite (from i5 config). 🔍: Aspire 7 all three, 15Q8X10, Slim 5i, ThinkBook.</p></div>
-    <div class="check"><span class="stamp ok">✅ CONFIRMED</span><h4><span>📄</span>MS Office bundles</h4><p>In title (✓): Gaming 3, Slim 5i, 15Q8X10, 15AHP10, 83K100C6IN (Office Home 2024 per research), 15IRH10, Vivobook 16 (Office 2024), Aspire 14 AI (Office 2024 + M365 Basic). 🔍 Not stated: Aspire 7 (all 3 CPUs), Cyborg 15, Motobook 60, V14, ThinkBook.</p></div>
-    <div class="check"><span class="stamp ok">✅ CONFIRMED</span><h4><span>🛡️</span>Warranty &amp; service</h4><p>1-yr on-site: 83K100C6IN. 1Yr ADP: 15IRH10, 15Q8X10. Trust Shield (48-hr + doorstep): Aspire 14 AI. Ask explicitly for the three gaming machines.</p></div>
-    <div class="check"><span class="stamp inf">⚠️ INFERRED</span><h4><span>🖥️</span>Gaming 3 panel &amp; battery</h4><p>15IHU6 ships 60Hz and 120Hz panels; battery is 45Wh-class. Confirm both on the live page before buying.</p></div>
-    <div class="check"><span class="stamp todo">🔍 VERIFY</span><h4><span>⚡</span>RTX TGP (wattage)</h4><p>A 3050 at 60W vs 95W differs ~25% in fps. Cyborg's 2050 is stated 45W ✅; check "Graphics TGP" on both Aspire 7 and Gaming 3 listings.</p></div>
-    <div class="check"><span class="stamp todo">🔍 VERIFY</span><h4><span>🤖</span>The AMD processor row</h4><p>Lenovo IdeaPad Slim 3 15AHP10: 7735HS → 680M (jumps to ~#5). 7435HS → 610M (stays #9). One line on the listing decides.</p></div>
-    <div class="check"><span class="stamp todo">🔍 VERIFY</span><h4><span>🔢</span>Core 7 240H &amp; ThinkBook codes</h4><p>Confirm the 240H's core count on Intel ARK (8C/12T expected) and get the ThinkBook 16's full model code before trusting any of its specs.</p></div>
-    <div class="check"><span class="stamp todo">🔍 VERIFY</span><h4><span>🤖</span>Arm app check</h4><p>For Aspire 14 AI / 15Q8X10: list your course software + games, confirm each runs on Snapdragon X.</p></div>
+    <div class="check"><span class="stamp ok">✅ CONFIRMED</span><h4><span>🧩</span>RAM type &amp; slots</h4><p>Slim 3 15IRH10 (83K100C6IN): 16GB DDR5 = 8GB soldered + 8GB module (free slot). Aspire Lite (i5): LPDDR5 onboard. Slim 3 Gen 8: soldered. Everything else: 🔍.</p></div>
+    <div class="check"><span class="stamp ok">✅ CONFIRMED</span><h4><span>🔋</span>Battery (verified only)</h4><p>50Wh — Slim 3 15IRH10 · 60Wh — Motobook 60. ⚠️ Inferred: ≈53.5Wh Cyborg, 45Wh Gaming 3, 54Wh Aspire Lite. 🔍: all three Aspire 7s, 15Q8X10, Slim 5i, ThinkBook.</p></div>
+    <div class="check"><span class="stamp ok">✅ CONFIRMED</span><h4><span>📄</span>MS Office bundles</h4><p>Confirmed in titles: Gaming 3, Slim 5i, 15Q8X10, 15AHP10, Aspire 14 AI (Office 2024 + M365 Basic). <b>New this round:</b> the Slim 3 15IRH10 and Vivobook 16 listings do NOT mention Office in their titles — verify before assuming.</p></div>
+    <div class="check"><span class="stamp ok">✅ CONFIRMED</span><h4><span>🛡️</span>Warranty &amp; service</h4><p>1Yr ADP: Slim 3 15IRH10 (in this listing) and 15Q8X10. Trust Shield (48-hr + doorstep): Aspire 14 AI. Ask explicitly for the three Aspire 7s, Cyborg and Gaming 3.</p></div>
+    <div class="check"><span class="stamp inf">⚠️ INFERRED</span><h4><span>🖥️</span>Gaming 3 panel &amp; battery</h4><p>15IHU6 ships both 60Hz and 120Hz panels; battery is 45Wh-class. Neither was in My listing — confirm both on the live page.</p></div>
+    <div class="check"><span class="stamp inf">⚠️ INFERRED</span><h4><span>🖥️</span>Motobook 60 panel</h4><p>My link's slug says <b>WUXGA OLED</b> (1920×1200), while My earlier research matched a 2.8K 2880×1800 120Hz config. Confirm this listing's exact resolution and refresh rate before buying.</p></div>
+    <div class="check"><span class="stamp todo">🔍 VERIFY</span><h4><span>⚡</span>RTX TGP (wattage)</h4><p>A 3050 at 60W vs 95W differs ~25% in fps. Cyborg's 2050 is stated 45W ✅ — check “Graphics TGP” on all three Aspire 7 listings and the Gaming 3.</p></div>
+    <div class="check"><span class="stamp todo">🔍 VERIFY</span><h4><span>🤖</span>The AMD processor row</h4><p>Slim 3 15AHP10: 7735HS → Radeon 680M (a genuine gaming jump). 7435HS → Radeon 610M (stays #11). One line on the listing decides.</p></div>
+    <div class="check"><span class="stamp todo">🔍 VERIFY</span><h4><span>🔢</span>Core 7 240H &amp; ThinkBook codes</h4><p>Confirm the 240H's core count on Intel ARK, and get the ThinkBook 16's full model code before trusting any of its specs.</p></div>
+    <div class="check"><span class="stamp todo">🔍 VERIFY</span><h4><span>🤖</span>Arm app check</h4><p>For Aspire 14 AI / 15Q8X10: list My course software + games and confirm each runs on Snapdragon X before paying.</p></div>
     <div class="check"><span class="stamp todo">🔍 VERIFY</span><h4><span>🔌</span>Ports, brightness, coating</h4><p>USB-C PD charging? HDMI? Nits (250 vs 300)? Anti-glare vs glossy? None of the listings show these — check each live page.</p></div>
+    <div class="check"><span class="stamp todo">🔍 VERIFY</span><h4><span>🧮</span>Vivobook SKU check</h4><p>My link is the X1605VA-SH1952WS. Confirm it is the i5-13420H variant My original screenshot showed (the Vivobook 16 ships several 13th-gen chips).</p></div>
   </div>
 
   <div class="protip">
     <h3>💡 Pro tip</h3>
-    <p>Before paying ₹64,809 for the Aspire 7 i7, check whether any <b>RTX 4050 machine</b> (Lenovo LOQ, HP Victus, ASUS TUF) has dropped under ~₹75K in the current sale — if so, it leapfrogs the entire 3050 tier. Set a price alert; sales move weekly.</p>
-  </div>
-
-  <div class="avoid">
-    <h3>❌ Skip these listings — and why</h3>
-    <ul>
-      <li><b>Lenovo IdeaPad Slim 5i 15ITL05 (i5-1135G7 · 2GB MX-class) — ₹62,999</b> — 4-core 11th-gen U-series CPU at nearly Cyborg money; the weakest value on the page. (Its pasted link also pointed at the wrong product — a search link is used until you send the real URL.)</li>
-      <li><b>Lenovo ThinkBook 16 (Ryzen 5 220) — ₹82,990</b> — highest price of all 18 with an unconfirmed GPU.</li>
-      <li><b>Lenovo IdeaPad Slim 3 15IRH10 (i5-13420H) — ₹73,990</b> — the ₹66,015 83K100C6IN is the same machine family, ₹8K less; ADP alone does not close that gap.</li>
-      <li><b>Acer Aspire Lite (i5-13420H) — ₹73,376</b> — dominated by its own i7 sibling (₹72,665, 2 more cores) and by everything above it.</li>
-      <li><b>Lenovo V14 (2025) (i5-13420H) — ₹72,900</b> — same CPU as the ₹66K Slim 3 at ₹6.9K more; Win 11 Pro is the only edge.</li>
-      <li><b>Lenovo IdeaPad Slim 3 Gen 8 (i5-12450H)</b> — unpriced, older chip, soldered RAM.</li>
-    </ul>
+    <p>Before paying ₹64,809 for the Aspire 7 i7, check whether any <b>RTX 4050 machine</b> (Lenovo LOQ, HP Victus, ASUS TUF) has dropped under ~₹75K in the current sale — if so, it leapfrogs the entire 3050 tier at gaming and editing. Set a price alert; sale prices move weekly.</p>
   </div>
 </section>
 
-<!-- ================= SOURCES ================= -->
+<!-- ================= 06 SOURCES ================= -->
 <section id="sources" class="wrap">
   <div class="section-head">
-    <h2>🔗 <em>Sources & Links</em></h2>
-    <p>Six direct Flipkart listings are embedded as 🛒 buttons in the table (session trackers stripped — the <b>pid</b> identifies each product).</p>
+    <span class="eyebrow">06 · Sources &amp; links</span>
+    <h2>🔗 Where the <em>data</em> comes from</h2>
+    <p>Eleven direct Flipkart listings are embedded (session trackers stripped — the pid identifies each product). Everything else links to official spec databases.</p>
   </div>
   <div class="srcs">
     <div class="src"><h4>Lenovo PSREF</h4><p>Official spec DB — Slim 3 family + 7735HS/680M configs.</p><a href="https://psref.lenovo.com/" target="_blank" rel="noopener">psref.lenovo.com</a></div>
@@ -455,204 +570,164 @@
     <div class="src"><h4>Acer India</h4><p>Aspire 7 A715-79G (all CPU versions), Aspire 14 AI, Aspire Lite.</p><a href="https://www.acer.com/in/en" target="_blank" rel="noopener">acer.com/in</a></div>
     <div class="src"><h4>MSI India</h4><p>Cyborg 15 A12UCX official specs.</p><a href="https://www.msi.com/in" target="_blank" rel="noopener">msi.com/in</a></div>
     <div class="src"><h4>Intel ARK</h4><p>Verify Core 5 210H / Core 7 240H / i7-13620H core counts.</p><a href="https://ark.intel.com/" target="_blank" rel="noopener">ark.intel.com</a></div>
-    <div class="src"><h4>Gadgets 360</h4><p>Motobook 60 — OLED 2880×1800 120Hz, 60Wh, ~1.39 kg.</p><a href="https://www.gadgets360.com/" target="_blank" rel="noopener">gadgets360.com</a></div>
+    <div class="src"><h4>Motorola India</h4><p>Motobook 60 (14IRH10R) official pages.</p><a href="https://www.motorola.in/" target="_blank" rel="noopener">motorola.in</a></div>
+    <div class="src"><h4>ASUS India</h4><p>Vivobook 16 X1605VA tech specs.</p><a href="https://www.asus.com/in/" target="_blank" rel="noopener">asus.com/in</a></div>
     <div class="src"><h4>Qualcomm</h4><p>Snapdragon X + Adreno X1-45 details.</p><a href="https://www.qualcomm.com/" target="_blank" rel="noopener">qualcomm.com</a></div>
-    <div class="src"><h4>Flipkart</h4><p>Live prices, ratings, stock — source of every price here.</p><a href="https://www.flipkart.com/" target="_blank" rel="noopener">flipkart.com</a></div>
+    <div class="src"><h4>Flipkart</h4><p>Live prices, ratings, stock — source of every price on this page.</p><a href="https://www.flipkart.com/" target="_blank" rel="noopener">flipkart.com</a></div>
   </div>
-  <p class="src-note">Direct listings embedded: Acer Aspire 7 A715-79G in all three CPU versions (i7-13620H / Core 5 210H / Core 7 240H) · Lenovo IdeaPad Gaming 3 15IHU6D1 · MSI Cyborg 15 A12UCX-264IN · Lenovo IdeaPad Slim 3 15Q8X10. The Slim 5i 15ITL05 row uses a search link until its real URL arrives.</p>
+  <p class="src-note">Direct listings embedded (11): Acer Aspire 7 A715-79G ×3 (i7-13620H ₹64,809 · Core 7 240H ₹75,449 · Core 5 210H ₹69,000) · MSI Cyborg 15 ₹60,059 · Lenovo IdeaPad Gaming 3 ₹71,000 · Motorola Motobook 60 ₹62,990 · Lenovo IdeaPad Slim 3 15IRH10 ₹69,000 · Acer Aspire 14 AI ₹56,990 · Lenovo IdeaPad Slim 3 15Q8X10 ₹63,089 · ASUS Vivobook 16 X1605VA ₹74,575 · Acer Aspire Lite AL15-52H (i7) ₹79,999. Still on search links: Slim 3 15AHP10, V14, Aspire Lite i5, Slim 5i, ThinkBook 16, Slim 3 Gen 8 — send URLs anytime.</p>
 </section>
 
 <footer>
-  <p><b>💻 Laptop Guide v3.1</b> — 15 priced + 3 unpriced listings · rankings on conservative specs · full names everywhere · rendering bug fixed.</p>
-  <p>Still open: Slim 3 15AHP10 processor row (7735HS vs 7435HS) · Aspire 7 TGP &amp; RAM type per variant · Core 7 240H ARK check · Slim 5i real link · ThinkBook model code · prices for the 3 unpriced listings. Prices move constantly — re-verify before buying.</p>
+  <p><b>💻 Laptop Guide v5</b> — 16 priced + 1 unpriced listing · ranked by package-per-rupee · grouped Buy → Consider → Skip · full names everywhere.</p>
+  <p>Still open: Motobook panel resolution/refresh · Slim 3 15IRH10 &amp; Vivobook Office bundles · Vivobook SKU CPU · Aspire 7 TGP &amp; RAM type · Slim 3 15AHP10 processor row (7735HS vs 7435HS) · Core 7 240H ARK check · Slim 3 Gen 8 price. Prices move constantly — re-verify before buying.</p>
 </footer>
 
+<!-- ================= STICKY MOBILE CTA ================= -->
+<div class="mcta">
+  <div class="mcta-info">
+    <b>🏆 #1 · Acer Aspire 7 (i7-13620H)</b>
+    <span>₹64,809 · RTX 3050 6GB · 144Hz</span>
+  </div>
+  <a class="btn btn-primary btn-sm" href="https://www.flipkart.com/acer-aspire-7-intel-core-i7-13th-gen-13620h-16-gb-512-gb-ssd-windows-11-home-6-graphics-nvidia-geforce-rtx-3050-144-hz-a715-79g-gaming-laptop/p/itm0f412dd7943ad?pid=COMHD5WWFAGFXGN2&marketplace=FLIPKART" target="_blank" rel="noopener">🛒 View</a>
+</div>
+
 <script>
-  /* ============ DATA — full names, conservative specs, badges aligned to rank ============ */
+  /* ================= DATA — full names, updated prices & links ================= */
   const LAPTOPS = [
-    {rank:1, badge:'buy', name:'Acer Aspire 7 A715-79G (Intel Core i7-13620H)', code:'RTX 3050 6GB · 144Hz', cpu:'Intel Core i7-13620H · 10C (6P+4E)/16T ✅', gpu:'NVIDIA RTX 3050 6GB — dedicated ✅', ram:'16GB (type 🔍)', ssd:'512GB SSD', display:'15.6″ FHD · 144Hz ✅ (IPS 🔍)', batt:'Wh 🔍 · 1.99 kg ✅', screen:15.6, rating:null, reviews:null, price:64809, mrp:null, q:'Acer Aspire 7 A715-79G i7-13620H RTX 3050 144Hz', note:'🏆 #1 — the only machine strong at all five jobs. Office not in title — verify.'},
-    {rank:2, badge:'buy', name:'MSI Cyborg 15 A12UCX-264IN (Intel Core i5-12450H)', code:'RTX 2050 · 45W · 144Hz', cpu:'Intel Core i5-12450H · 8C (4P+4E)/12T ✅', gpu:'NVIDIA RTX 2050 4GB @ 45W — dedicated ✅', ram:'16GB (type 🔍)', ssd:'512GB SSD', display:'15.6″ FHD · 144Hz ✅', batt:'≈53.5Wh ⚠️ · 1.98 kg ✅', screen:15.6, rating:null, reviews:null, price:60059, mrp:null, q:'MSI Cyborg 15 A12UCX-264IN RTX 2050', note:'Cheapest real GPU + DLSS. The value dGPU pick.'},
-    {rank:3, badge:'buy', name:'Motorola Motobook 60 (Intel Core 5 210H)', code:'14″ OLED · 2.8K · 120Hz', cpu:'Intel Core 5 210H · 8C/12T ✅', gpu:'Intel UHD ✅', ram:'16GB (type 🔍)', ssd:'512GB SSD', display:'14″ OLED 2880×1800 · 120Hz ✅', batt:'60Wh ✅ · 1.39 kg ✅', screen:14, rating:4.4, reviews:3800, price:63990, mrp:93690, q:'Motorola Motobook 60 Core 5 210H OLED', note:'Best display + biggest battery of all 18 · 4.4★ (3.8K+)'},
-    {rank:4, badge:'buy', name:'Lenovo IdeaPad Slim 3 83K100C6IN (Intel Core i5-13420H)', code:'15.3″ WUXGA · 50Wh', cpu:'Intel Core i5-13420H · 8C (4P+4E)/12T ✅', gpu:'Intel UHD ✅', ram:'16GB DDR5 (8+8, free slot ⬆) ✅', ssd:'512GB PCIe Gen4 ✅', display:'15.3″ WUXGA IPS ✅', batt:'50Wh ✅ · 1.6 kg ✅', screen:15.3, rating:4.2, reviews:56, price:66015, mrp:90000, q:'Lenovo IdeaPad Slim 3 83K100C6IN', note:'Safe all-rounder — upgradable RAM, on-site warranty, Office Home 2024'},
-    {rank:5, badge:'buy', name:'Acer Aspire 14 AI A14-11M (Snapdragon X)', code:'Adreno X1-45 · 1.26 kg', cpu:'Qualcomm Snapdragon X + 45-TOPS NPU ✅', gpu:'Qualcomm Adreno X1-45 (Arm) ✅', ram:'16GB LPDDR5X (onboard) ✅', ssd:'512GB SSD', display:'14″ WUXGA IPS ✅', batt:'All-day Arm · 1.26 kg ✅', screen:14, rating:4.4, reviews:205, price:56990, mrp:91999, q:'Acer Aspire 14 AI A14-11M Snapdragon', note:'Cheapest + lightest · Office 2024 + M365 · Windows-on-Arm gate'},
-    {rank:6, badge:'buy', name:'Lenovo IdeaPad Slim 3 15Q8X10 (Snapdragon X · 1TB)', code:'1Yr ADP · 15.3″ · 1.55 kg', cpu:'Qualcomm Snapdragon X (variant 🔍)', gpu:'Qualcomm Adreno (Arm) ✅', ram:'16GB LPDDR5X ✅', ssd:'1TB SSD ✅', display:'15.3″ WUXGA IPS ✅', batt:'Wh 🔍 · 1.55 kg ✅', screen:15.3, rating:null, reviews:null, price:63089, mrp:null, q:'Lenovo IdeaPad Slim 3 15Q8X10 Snapdragon 1TB', note:'1TB + 1Yr ADP — storage-first Arm pick (same app caveats)'},
-    {rank:7, badge:'consider', name:'Lenovo IdeaPad Gaming 3 15IHU6D1 (Intel Core i5-11300H)', code:'RTX 3050 4GB · MS Office', cpu:'Intel Core i5-11300H · 4C/8T ✅ (weakest H-chip here)', gpu:'NVIDIA RTX 3050 4GB — dedicated ✅', ram:'16GB (DDR4 ⚠️)', ssd:'512GB SSD', display:'15.6″ FHD (refresh ⚠️ verify)', batt:'45Wh ⚠️ · 2.25 kg ✅', screen:15.6, rating:null, reviews:null, price:71000, mrp:null, q:'Lenovo IdeaPad Gaming 3 15IHU6 RTX 3050', note:'RTX inside, but 4-core CPU + ₹6.2K over the superior Aspire 7 i7. Niche: Lenovo + Office + 3050.'},
-    {rank:8, badge:'consider', name:'Acer Aspire Lite (Intel Core i7-12650H)', code:'15.6″ FHD · UHD 64EU', cpu:'Intel Core i7-12650H · 10C (6P+4E)/16T ✅', gpu:'Intel UHD 64EU ✅', ram:'16GB (slots 🔍)', ssd:'512GB (expands to 1TB ✅)', display:'15.6″ FHD IPS ✅', batt:'54Wh ⚠️ (from i5 config) · 1.70 kg ✅', screen:15.6, rating:3.8, reviews:30, price:72665, mrp:79990, q:'Acer Aspire Lite i7-12650H', note:'Correctly ABOVE the Slim 3 15AHP10 — cheaper, 2 more cores. 3.8★ is the holdback.'},
-    {rank:9, badge:'consider', name:'Lenovo IdeaPad Slim 3 15AHP10 (AMD Ryzen 7)', code:'GPU unverified ⚠️', cpu:'AMD Ryzen 7 Octa-Core · 8C/16T (model 🔍)', gpu:'Radeon 610M likely ⚠️ · 680M only if 7735HS 🔍', ram:'16GB DDR5 (slots 🔍)', ssd:'512GB SSD', display:'15.3″ WUXGA IPS ✅', batt:'Wh 🔍 · 1.59 kg ✅', screen:15.3, rating:4.2, reviews:18, price:75515, mrp:90000, q:'Lenovo IdeaPad Slim 3 15AHP10 Ryzen 7', note:'Ranked on conservative 610M → #9. If the listing confirms 7735HS + 680M, it jumps to ~#5. 2nd-highest price on the page.'},
-    {rank:10, badge:'consider', name:'ASUS Vivobook 16 (2025) (Intel Core i5-13420H)', code:'16″ · Office 2024', cpu:'Intel Core i5-13420H · 8C/12T ✅', gpu:'Intel UHD ✅', ram:'16GB', ssd:'512GB PCIe 3.0 ✅', display:'16″ FHD+ (panel 🔍)', batt:'Wh 🔍 · kg 🔍', screen:16, rating:4.4, reviews:349, price:74575, mrp:84990, q:'ASUS Vivobook 16 i5-13420H', note:'Biggest canvas + Office 2024 · 4.4★ (349)'},
-    {rank:11, badge:'skip', name:'Lenovo IdeaPad Slim 3 15IRH10 (Intel Core i5-13420H)', code:'"New Launch" · 1Yr ADP', cpu:'Intel Core i5-13420H · 8C/12T ✅', gpu:'Intel UHD ✅', ram:'16GB DDR5 ✅', ssd:'512GB SSD', display:'15.3″ WUXGA IPS ✅', batt:'50Wh ✅ · 1.63 kg ✅', screen:15.3, rating:4.1, reviews:null, price:73990, mrp:82690, q:'Lenovo IdeaPad Slim 3 15IRH10', note:'Same family as #4 at ₹8K more — ADP is its only edge'},
-    {rank:12, badge:'skip', name:'Lenovo V14 (2025) (Intel Core i5-13420H · Win 11 Pro)', code:'14″ · business line', cpu:'Intel Core i5-13420H · 8C/12T ✅', gpu:'Intel UHD ✅', ram:'16GB (type 🔍)', ssd:'512GB SSD', display:'14″ FHD (panel 🔍)', batt:'Wh 🔍 · ~1.4 kg ✅', screen:14, rating:4.0, reviews:55, price:72900, mrp:75000, q:'Lenovo V14 2025 i5-13420H', note:'Same CPU as #4 at ₹6.9K more · 3% off · Win 11 Pro is the sole edge'},
-    {rank:13, badge:'skip', name:'Acer Aspire Lite (Intel Core i5-13420H)', code:'15.6″ FHD · onboard RAM', cpu:'Intel Core i5-13420H · 8C/12T ✅', gpu:'Intel UHD 48EU ✅', ram:'16GB LPDDR5 (onboard 🔒) ✅', ssd:'512GB Gen4 (expands to 1TB ✅)', display:'15.6″ FHD IPS ✅', batt:'54Wh ✅ · 1.70 kg ✅', screen:15.6, rating:3.8, reviews:30, price:73376, mrp:89990, q:'Acer Aspire Lite i5-13420H 16GB', note:'Dominated by its own cheaper, faster i7 sibling (#8)'},
-    {rank:14, badge:'skip', name:'Lenovo IdeaPad Slim 5i 15ITL05 (Intel Core i5-1135G7)', code:'2GB dGPU · model 🔍', cpu:'Intel Core i5-1135G7 · 4C/8T · U-series ✅', gpu:'2GB dGPU (MX450-class ⚠️ — verify)', ram:'16GB (type 🔍)', ssd:'512GB SSD', display:'15.6″ FHD (300-nit ⚠️)', batt:'Wh 🔍 · 1.66 kg ✅', screen:15.6, rating:null, reviews:null, price:62999, mrp:null, q:'Lenovo IdeaPad Slim 5i 15ITL05 i5-1135G7', note:'4-core 11th-gen at ₹63K = weakest value per rupee. (Pasted link pointed at the wrong product — search link used.)'},
-    {rank:15, badge:'skip', name:'Lenovo ThinkBook 16 (AMD Ryzen 5 220)', code:'GPU unconfirmed 🔍', cpu:'AMD Ryzen 5 220 (full code 🔍)', gpu:'AMD iGPU — UNCONFIRMED 🔍', ram:'16GB (🔍)', ssd:'— (🔍)', display:'16″ (panel 🔍)', batt:'🔍 · 🔍', screen:16, rating:null, reviews:null, price:82990, mrp:115740, q:'Lenovo ThinkBook 16 Ryzen 5 220', note:'Highest price of all 18 with an unconfirmed GPU — never trust specs until the model code arrives'},
-    {rank:16, badge:'consider', unranked:true, name:'Acer Aspire 7 A715-79G (Intel Core 5 210H)', code:'fallback #1 · no price', cpu:'Intel Core 5 210H · 8C/12T ✅', gpu:'NVIDIA RTX 3050 4GB — dedicated ✅', ram:'16GB (type 🔍)', ssd:'512GB SSD', display:'15.6″ FHD (144Hz 🔍)', batt:'🔍 · 1.99 kg ✅', screen:15.6, rating:null, reviews:null, price:null, mrp:null, q:'Acer Aspire 7 A715-79G Core 5 210H RTX 3050', note:'🔄 NOT RANKED (no price in your message) — fallback only if the i7-13620H version is out of stock. Never pay above ₹64,809.'},
-    {rank:17, badge:'consider', unranked:true, name:'Acer Aspire 7 A715-79G (Intel Core 7 240H)', code:'fallback #2 · no price', cpu:'Intel Core 7 240H · 8C/12T ✅ (ARK 🔍)', gpu:'NVIDIA RTX 3050 6GB — dedicated ✅', ram:'16GB (type 🔍)', ssd:'512GB SSD', display:'15.6″ FHD (144Hz 🔍)', batt:'🔍 · 1.99 kg ✅', screen:15.6, rating:null, reviews:null, price:null, mrp:null, q:'Acer Aspire 7 A715-79G Core 7 240H RTX 3050', note:'🔄 NOT RANKED (no price) — fallback #2. "i7 14th Gen" is marketing; it is NOT stronger than the i7-13620H.'},
-    {rank:18, badge:'skip', unranked:true, name:'Lenovo IdeaPad Slim 3 Gen 8 (Intel Core i5-12450H)', code:'no price shown', cpu:'Intel Core i5-12450H · 8C/12T ✅', gpu:'Intel UHD ✅', ram:'16GB LPDDR5-4800 (soldered 🔒) ✅', ssd:'512GB Gen4 ✅', display:'15.6″ FHD IPS · 300 nits · 60Hz ⚠️', batt:'varies ⚠️', screen:15.6, rating:4.0, reviews:9, price:null, mrp:null, q:'Lenovo IdeaPad Slim 3 i5-12450H Gen 8', note:'NOT RANKED (no price) — older 12th-gen chip, soldered RAM; verify the model code on the live listing.'}
+    {rank:1,verdict:"buy",name:"Acer Aspire 7 A715-79G",variant:"Intel Core i7-13620H · RTX 3050 6GB · 144Hz",cpu:"Intel Core i7-13620H · 10C (6P+4E) / 16T",gpu:"NVIDIA RTX 3050 6GB · dedicated",ram:"16GB (type 🔍)",ssd:"512GB SSD",display:"15.6″ FHD · 144Hz",batt:"Wh 🔍 · 1.99 kg",screen:15.6,rating:null,reviews:null,price:64809,mrp:null,q:"Acer Aspire 7 A715-79G i7-13620H RTX 3050 144Hz",note:"My #1 — the strongest Aspire 7 chip AND the cheapest variant. Office not stated: verify."},
+    {rank:2,verdict:"buy",name:"Acer Aspire 7 A715-79G",variant:"Intel Core 7 240H (“i7 14th Gen”) · RTX 3050 6GB",cpu:"Intel Core 7 240H · 8C / 12T (verify ARK)",gpu:"NVIDIA RTX 3050 6GB · dedicated",ram:"16GB (type 🔍)",ssd:"512GB SSD",display:"15.6″ FHD (144Hz 🔍)",batt:"Wh 🔍 · 1.99 kg",screen:15.6,rating:null,reviews:null,price:75449,mrp:null,q:"Acer Aspire 7 A715-79G Core 7 240H RTX 3050",note:"My #2 — 6GB card, but ₹10,640 over the stronger i7-13620H. The “i7 14th Gen” badge is marketing."},
+    {rank:3,verdict:"buy",name:"Acer Aspire 7 A715-79G",variant:"Intel Core 5 210H · RTX 3050 4GB",cpu:"Intel Core 5 210H · 8C / 12T",gpu:"NVIDIA RTX 3050 4GB · dedicated",ram:"16GB (type 🔍)",ssd:"512GB SSD",display:"15.6″ FHD (144Hz 🔍)",batt:"Wh 🔍 · 1.99 kg",screen:15.6,rating:null,reviews:null,price:69000,mrp:null,q:"Acer Aspire 7 A715-79G Core 5 210H RTX 3050",note:"My #3 — same ₹69,000 as the Slim 3 15IRH10 (#7): RTX 3050 vs integrated graphics is the whole difference."},
+    {rank:4,verdict:"buy",name:"MSI Cyborg 15 A12UCX-264IN",variant:"Intel Core i5-12450H · RTX 2050 45W · 144Hz",cpu:"Intel Core i5-12450H · 8C / 12T",gpu:"NVIDIA RTX 2050 4GB @ 45W · dedicated",ram:"16GB (type 🔍)",ssd:"512GB SSD",display:"15.6″ FHD · 144Hz",batt:"≈53.5Wh ⚠️ · 1.98 kg",screen:15.6,rating:null,reviews:null,price:60059,mrp:null,q:"MSI Cyborg 15 A12UCX-264IN RTX 2050",note:"Cheapest real GPU on the page — the pick if ₹60K is a hard cap."},
+    {rank:5,verdict:"consider",name:"Lenovo IdeaPad Gaming 3 15IHU6D1",variant:"Intel Core i5-11300H · RTX 3050 4GB · MS Office",cpu:"Intel Core i5-11300H · 4C / 8T (weakest H-chip here)",gpu:"NVIDIA RTX 3050 4GB · dedicated",ram:"16GB (DDR4 ⚠️)",ssd:"512GB SSD",display:"15.6″ FHD (refresh ⚠️)",batt:"45Wh ⚠️ · 2.25 kg",screen:15.6,rating:null,reviews:null,price:71000,mrp:null,q:"Lenovo IdeaPad Gaming 3 15IHU6 RTX 3050",note:"3050 + bundled Office, but a 4-core CPU at ₹6,191 over the superior Aspire 7 i7."},
+    {rank:6,verdict:"buy",name:"Motorola Motobook 60",variant:"14IRH10R · Intel Core 5 210H · 14″ OLED · full metal",cpu:"Intel Core 5 210H · 8C / 12T",gpu:"Intel UHD (integrated)",ram:"16GB (type 🔍)",ssd:"512GB SSD",display:"14″ OLED · WUXGA per listing (2.8K variant exists — verify)",batt:"60Wh · 1.39 kg",screen:14,rating:4.4,reviews:3800,price:62990,mrp:93690,q:"Motorola Motobook 60 Core 5 210H OLED",note:"Best display + biggest battery of all 17 · 4.4★ (3.8K+) · ↓₹1,000 this round. Confirm panel resolution & refresh on the live page.",upd:"↓ ₹1,000 price drop",updType:"down"},
+    {rank:7,verdict:"buy",name:"Lenovo IdeaPad Slim 3 15IRH10",variant:"83K100C6IN · Intel Core i5-13420H · 1Yr ADP",cpu:"Intel Core i5-13420H · 8C / 12T",gpu:"Intel UHD (integrated)",ram:"16GB DDR5 (8+8 per research, free slot ⬆)",ssd:"512GB SSD",display:"15.3″ WUXGA IPS",batt:"50Wh · 1.63 kg",screen:15.3,rating:4.2,reviews:56,price:69000,mrp:90000,q:"Lenovo IdeaPad Slim 3 15IRH10 83K100C6IN",note:"The safe x86 pick — upgradable RAM + 1Yr ADP. My link confirmed 15IRH10 = 83K100C6IN, so the old two listings merged here. Office not in this title — verify.",upd:"🔗 merged listing + ADP",updType:"fix"},
+    {rank:8,verdict:"buy",name:"Acer Aspire 14 AI A14-11M",variant:"Snapdragon X · Adreno X1-45 · Office 2024 + M365",cpu:"Qualcomm Snapdragon X + 45-TOPS NPU",gpu:"Qualcomm Adreno X1-45 (Arm)",ram:"16GB LPDDR5X (onboard)",ssd:"512GB SSD",display:"14″ WUXGA IPS",batt:"All-day (Arm) · 1.26 kg",screen:14,rating:4.4,reviews:205,price:56990,mrp:91999,q:"Acer Aspire 14 AI A14-11M Snapdragon",note:"Cheapest + lightest + longest battery · Office 2024 + M365 confirmed in title · run the Arm app check first.",upd:"🔗 direct link added",updType:"fix"},
+    {rank:9,verdict:"consider",name:"Lenovo IdeaPad Slim 3 15Q8X10",variant:"Snapdragon X · 16GB / 1TB · 1Yr ADP",cpu:"Qualcomm Snapdragon X (variant 🔍)",gpu:"Qualcomm Adreno (Arm)",ram:"16GB LPDDR5X (onboard)",ssd:"1TB SSD",display:"15.3″ WUXGA IPS",batt:"Wh 🔍 · 1.55 kg",screen:15.3,rating:null,reviews:null,price:63089,mrp:null,q:"Lenovo IdeaPad Slim 3 15Q8X10 Snapdragon 1TB",note:"1TB + ADP; same Arm gate as #8 — choose it over the Aspire only if you need the storage."},
+    {rank:10,verdict:"consider",name:"ASUS Vivobook 16 (2025) X1605VA",variant:"Intel Core i5-13420H · 16″ · SH1952WS",cpu:"Intel Core i5-13420H · 8C / 12T (confirm SKU)",gpu:"Intel UHD (integrated)",ram:"16GB",ssd:"512GB PCIe 3.0",display:"16″ FHD+ (panel 🔍)",batt:"Wh 🔍 · kg 🔍",screen:16,rating:4.4,reviews:349,price:74575,mrp:84990,q:"ASUS Vivobook 16 X1605VA i5-13420H",note:"16″ canvas + 4.4★ (349) — the most-reviewed iGPU machine. Office 2024 was on My original screenshot but not this SKU's title — verify.",upd:"🔗 direct link added",updType:"fix"},
+    {rank:11,verdict:"consider",name:"Lenovo IdeaPad Slim 3 15AHP10",variant:"AMD Ryzen 7 Octa-Core · GPU unverified",cpu:"AMD Ryzen 7 · 8C / 16T (model 🔍)",gpu:"Radeon 610M likely ⚠️ · 680M only if 7735HS",ram:"16GB DDR5 (slots 🔍)",ssd:"512GB SSD",display:"15.3″ WUXGA IPS",batt:"Wh 🔍 · 1.59 kg",screen:15.3,rating:4.2,reviews:18,price:75515,mrp:90000,q:"Lenovo IdeaPad Slim 3 15AHP10 Ryzen 7",note:"8C/16T, but the GPU row is unconfirmed — ranked on the conservative case. 2nd-highest price on the page."},
+    {rank:12,verdict:"skip",name:"Acer Aspire Lite AL15-52H",variant:"Intel Core i7-12650H · 15.6″ FHD",cpu:"Intel Core i7-12650H · 10C / 16T",gpu:"Intel UHD 64EU (integrated)",ram:"16GB (slots 🔍)",ssd:"512GB (expands to 1TB)",display:"15.6″ FHD IPS",batt:"54Wh ⚠️ · 1.70 kg",screen:15.6,rating:3.8,reviews:30,price:79999,mrp:79990,q:"Acer Aspire Lite AL15-52H i7-12650H",note:"Was ₹72,665. At ₹79,999 it costs more than every RTX 3050 machine here with only integrated graphics — ₹15,190 over the Aspire 7 i7 for 2 fewer cores and a far weaker GPU.",upd:"↑ ₹7,334 — demoted to Skip",updType:"up"},
+    {rank:13,verdict:"skip",name:"Lenovo V14 (2025)",variant:"Intel Core i5-13420H · Win 11 Pro",cpu:"Intel Core i5-13420H · 8C / 12T",gpu:"Intel UHD (integrated)",ram:"16GB (type 🔍)",ssd:"512GB SSD",display:"14″ FHD (panel 🔍)",batt:"Wh 🔍 · ~1.4 kg",screen:14,rating:4.0,reviews:55,price:72900,mrp:75000,q:"Lenovo V14 2025 i5-13420H",note:"Same CPU as #7 at ₹3,900 more and only 3% off. Win 11 Pro is the sole edge."},
+    {rank:14,verdict:"skip",name:"Acer Aspire Lite",variant:"Intel Core i5-13420H · onboard RAM",cpu:"Intel Core i5-13420H · 8C / 12T",gpu:"Intel UHD 48EU (integrated)",ram:"16GB LPDDR5 (onboard 🔒)",ssd:"512GB Gen4 (expands to 1TB)",display:"15.6″ FHD IPS",batt:"54Wh · 1.70 kg",screen:15.6,rating:3.8,reviews:30,price:73376,mrp:89990,q:"Acer Aspire Lite i5-13420H 16GB",note:"Dominated by its own i7 sibling and by everything above it."},
+    {rank:15,verdict:"skip",name:"Lenovo IdeaPad Slim 5i 15ITL05",variant:"Intel Core i5-1135G7 · 2GB MX-class dGPU",cpu:"Intel Core i5-1135G7 · 4C / 8T · U-series",gpu:"2GB dGPU (MX450-class ⚠️ — verify)",ram:"16GB (type 🔍)",ssd:"512GB SSD",display:"15.6″ FHD (300-nit ⚠️)",batt:"Wh 🔍 · 1.66 kg",screen:15.6,rating:null,reviews:null,price:62999,mrp:null,q:"Lenovo IdeaPad Slim 5i 15ITL05 i5-1135G7",note:"4-core 11th-gen at ₹63K — the weakest value per rupee. Real listing link still pending."},
+    {rank:16,verdict:"skip",name:"Lenovo ThinkBook 16",variant:"AMD Ryzen 5 220 · GPU unconfirmed",cpu:"AMD Ryzen 5 220 (full code 🔍)",gpu:"AMD iGPU — unconfirmed",ram:"16GB (🔍)",ssd:"— (🔍)",display:"16″ (panel 🔍)",batt:"🔍 · 🔍",screen:16,rating:null,reviews:null,price:82990,mrp:115740,q:"Lenovo ThinkBook 16 Ryzen 5 220",note:"The highest price of all 17 with an unconfirmed GPU — do not trust any spec until the model code arrives."},
+    {rank:17,verdict:"skip",unranked:true,name:"Lenovo IdeaPad Slim 3 Gen 8",variant:"Intel Core i5-12450H · unpriced listing",cpu:"Intel Core i5-12450H · 8C / 12T",gpu:"Intel UHD (integrated)",ram:"16GB LPDDR5-4800 (soldered 🔒)",ssd:"512GB Gen4",display:"15.6″ FHD IPS · 300 nits ⚠️ · 60Hz",batt:"varies ⚠️",screen:15.6,rating:4.0,reviews:9,price:null,mrp:null,q:"Lenovo IdeaPad Slim 3 i5-12450H Gen 8",note:"No price on the listing, so it stays unranked. Older 12th-gen chip, soldered RAM."}
   ];
 
-  /* direct Flipkart listings (trackers stripped; pid identifies the product) */
+  /* direct Flipkart listings — 11 embedded (trackers stripped; pid identifies the product) */
   const FLIP = {
-    1: 'https://www.flipkart.com/acer-aspire-7-intel-core-i7-13th-gen-13620h-16-gb-512-gb-ssd-windows-11-home-6-graphics-nvidia-geforce-rtx-3050-144-hz-a715-79g-gaming-laptop/p/itm0f412dd7943ad?pid=COMHD5WWFAGFXGN2&marketplace=FLIPKART',
-    2: 'https://www.flipkart.com/msi-cyborg-15-intel-core-i5-12th-gen-12450h-16-gb-512-gb-ssd-windows-11-home-4-graphics-nvidia-geforce-rtx-2050-144-hz-45-w-a12ucx-264in-gaming-laptop/p/itme528726b3eb8b?pid=COMGZW35W3DSJADN&marketplace=FLIPKART',
-    6: 'https://www.flipkart.com/lenovo-ideapad-slim-3-1yr-adp-snapdragon-x-16-gb-1-tb-ssd-windows-11-home-15q8x10-thin-light-laptop/p/itm9f8e47980095e?pid=COMHHDEES8YNG4HP&marketplace=FLIPKART',
-    7: 'https://www.flipkart.com/lenovo-ideapad-gaming-3-intel-core-i5-11th-gen-11300h-16-gb-512-gb-ssd-windows-11-home-4-graphics-nvidia-geforce-rtx-3050-15ihu6-15ihu6d1-laptop/p/itmc4612af4ab758?pid=COMGKC6YAWGQPZZY&marketplace=FLIPKART',
-    16:'https://www.flipkart.com/acer-aspire-7-intel-core-5-210h-16-gb-512-gb-ssd-windows-11-home-4-graphics-nvidia-geforce-rtx-3050-a715-79g-gaming-laptop/p/itm16e348955bedb?pid=COMHPE4FG5QGHGZH&marketplace=FLIPKART',
-    17:'https://www.flipkart.com/acer-aspire-7-i7-14th-gen-intel-core-240h-16-gb-512-gb-ssd-windows-11-home-6-graphics-nvidia-geforce-rtx-3050-a715-79g-gaming-laptop/p/itm29d23f46bd0b7?pid=COMHGEUYCPDCFWNN&marketplace=FLIPKART'
+    1:"https://www.flipkart.com/acer-aspire-7-intel-core-i7-13th-gen-13620h-16-gb-512-gb-ssd-windows-11-home-6-graphics-nvidia-geforce-rtx-3050-144-hz-a715-79g-gaming-laptop/p/itm0f412dd7943ad?pid=COMHD5WWFAGFXGN2&marketplace=FLIPKART",
+    2:"https://www.flipkart.com/acer-aspire-7-i7-14th-gen-intel-core-240h-16-gb-512-gb-ssd-windows-11-home-6-graphics-nvidia-geforce-rtx-3050-a715-79g-gaming-laptop/p/itm29d23f46bd0b7?pid=COMHGEUYCPDCFWNN&marketplace=FLIPKART",
+    3:"https://www.flipkart.com/acer-aspire-7-intel-core-5-210h-16-gb-512-gb-ssd-windows-11-home-4-graphics-nvidia-geforce-rtx-3050-a715-79g-gaming-laptop/p/itm16e348955bedb?pid=COMHPE4FG5QGHGZH&marketplace=FLIPKART",
+    4:"https://www.flipkart.com/msi-cyborg-15-intel-core-i5-12th-gen-12450h-16-gb-512-gb-ssd-windows-11-home-4-graphics-nvidia-geforce-rtx-2050-144-hz-45-w-a12ucx-264in-gaming-laptop/p/itme528726b3eb8b?pid=COMGZW35W3DSJADN&marketplace=FLIPKART",
+    5:"https://www.flipkart.com/lenovo-ideapad-gaming-3-intel-core-i5-11th-gen-11300h-16-gb-512-gb-ssd-windows-11-home-4-graphics-nvidia-geforce-rtx-3050-15ihu6-15ihu6d1-laptop/p/itmc4612af4ab758?pid=COMGKC6YAWGQPZZY&marketplace=FLIPKART",
+    6:"https://www.flipkart.com/motorola-motobook-60-full-metal-wuxga-oled-i5-14th-gen-intel-core-5-210h-16-gb-512-gb-ssd-windows-11-home-14irh10r-thin-light-laptop/p/itm2928b4d532ca8?pid=COMHQ6ZJ2CUUHN3D&marketplace=FLIPKART",
+    7:"https://www.flipkart.com/lenovo-ideapad-slim-3-wuxga-ips-1yr-adp-intel-core-i5-13th-gen-13420h-16-gb-512-gb-ssd-windows-11-home-15irh10-thin-light-laptop/p/itme80ce152342ee?pid=COMHA9FK5XHYYAZJ&marketplace=FLIPKART",
+    8:"https://www.flipkart.com/acer-aspire-14-ai-office-2024-m365-basic-snapdragon-x-16-gb-512-gb-ssd-windows-11-home-a14-11m-thin-light-laptop/p/itm08730687919bb?pid=COMHFSHUTDFXBZKR&marketplace=FLIPKART",
+    9:"https://www.flipkart.com/lenovo-ideapad-slim-3-1yr-adp-snapdragon-x-16-gb-1-tb-ssd-windows-11-home-15q8x10-thin-light-laptop/p/itm9f8e47980095e?pid=COMHHDEES8YNG4HP&marketplace=FLIPKART",
+    10:"https://www.flipkart.com/asus-vivobook-16-intel-core-i5-13th-gen-16-gb-512-gb-ssd-windows-11-home-x1605va-sh1952ws-thin-light-laptop/p/itm091d56f476095?pid=COMHHWD5GREFHZUG&marketplace=FLIPKART",
+    12:"https://www.flipkart.com/acer-aspire-lite-intel-core-i7-12th-gen-12650h-16-gb-512-gb-ssd-windows-11-home-al15-52h-thin-light-laptop/p/itmac43cf2d5d952?pid=COMHDTEFVZSFUFJD&marketplace=FLIPKART"
   };
 
-  /* ============ RANKINGS — priced listings only, conservative specs, full names ============ */
-  const RANKINGS = {
-    'r-overall': [
-      ['Acer Aspire 7 A715-79G (Intel Core i7-13620H · RTX 3050 6GB · 144Hz)', 64809, '10C/16T + real RTX + 144Hz at ₹64.8K — the only listing strong at all five of your jobs, and cheaper than every iGPU-only performance pick.'],
-      ['MSI Cyborg 15 A12UCX-264IN (Intel Core i5-12450H · RTX 2050 45W · 144Hz)', 60059, 'Cheapest real GPU with DLSS + NVENC. The value dGPU entry — ₹4,750 under the Aspire 7 i7 buys you clearly less.'],
-      ['Motorola Motobook 60 (Intel Core 5 210H · 14″ OLED 2.8K 120Hz)', 63990, 'Display + battery king (60Wh, 1.39 kg) with the biggest review base (4.4★, 3.8K+). The campus/media pick if you skip the dGPU.'],
-      ['Lenovo IdeaPad Slim 3 83K100C6IN (Intel Core i5-13420H)', 66015, 'Safest all-rounder: upgradable DDR5, 50Wh, 1-yr on-site, Office Home 2024. Games only at low settings.'],
-      ['Acer Aspire 14 AI A14-11M (Snapdragon X · Adreno X1-45)', 56990, 'Cheapest, lightest, longest battery — gated on Windows-on-Arm app/game compatibility.'],
-      ['Lenovo IdeaPad Slim 3 15Q8X10 (Snapdragon X · 16GB/1TB · 1Yr ADP)', 63089, '1TB + accidental damage protection — the storage-first Arm pick (same app caveats as #5).'],
-      ['Lenovo IdeaPad Gaming 3 15IHU6D1 (Intel Core i5-11300H · RTX 3050 4GB)', 71000, 'RTX 3050 + bundled Office, but the 4-core CPU is the weakest H-chip here and it costs ₹6.2K MORE than the superior Aspire 7. Niche pick only.'],
-      ['Acer Aspire Lite (Intel Core i7-12650H)', 72665, '10C/16T — the most Intel threads on the page — ₹2,850 cheaper than the Slim 3 15AHP10, so it correctly sits above it. 3.8★ rating is the holdback.'],
-      ['Lenovo IdeaPad Slim 3 15AHP10 (AMD Ryzen 7)', 75515, 'Ranked on the conservative case (Radeon 610M): 8C/16T in a 1.59 kg frame at the 2nd-highest price on the page. <b class="cond">If the listing confirms 7735HS + Radeon 680M, it jumps to ~#5.</b>'],
-      ['ASUS Vivobook 16 (2025) (Intel Core i5-13420H)', 74575, '16″ canvas + Office 2024 + 4.4★ (349) — but a weak iGPU for the money.'],
-      ['Lenovo IdeaPad Slim 3 15IRH10 (Intel Core i5-13420H)', 73990, 'The ₹66,015 83K100C6IN is the same machine family; ADP alone does not justify ₹8K.'],
-      ['Lenovo V14 (2025) (Intel Core i5-13420H · Win 11 Pro)', 72900, 'Same CPU as #4 at ₹6.9K more and 3% off. Win 11 Pro is the only edge.'],
-      ['Acer Aspire Lite (Intel Core i5-13420H)', 73376, 'Dominated by its own i7 sibling (#8) — which is cheaper AND has 2 more cores.'],
-      ['Lenovo IdeaPad Slim 5i 15ITL05 (Intel Core i5-1135G7)', 62999, '4-core 11th-gen U-series at ₹63K — the weakest value per rupee on the page.'],
-      ['Lenovo ThinkBook 16 (AMD Ryzen 5 220)', 82990, 'The highest price of all 18 with an unconfirmed GPU. Not trustworthy until the model code arrives.']
-    ],
-    'r-pgcd': [
-      ['Acer Aspire 7 A715-79G (Intel Core i7-13620H · RTX 3050 6GB · 144Hz)', 64809, 'Sweeps all four pillars: best GPU, best CPU, 144Hz, and a mid price.'],
-      ['MSI Cyborg 15 A12UCX-264IN (Intel Core i5-12450H · RTX 2050 45W · 144Hz)', 60059, 'Cheapest dGPU + 144Hz + 8C/12T — the value sweep of this list.'],
-      ['Motorola Motobook 60 (Intel Core 5 210H · 14″ OLED 2.8K 120Hz)', 63990, 'The OLED 120Hz panel carries the display pillar; gaming is low-settings only.'],
-      ['Lenovo IdeaPad Slim 3 83K100C6IN (Intel Core i5-13420H)', 66015, 'Good price, solid CPU, WUXGA panel; UHD gaming only.'],
-      ['Acer Aspire 14 AI A14-11M (Snapdragon X)', 56990, 'Wins price + coding + a decent panel, but Arm zeroes the gaming pillar.'],
-      ['Lenovo IdeaPad Gaming 3 15IHU6D1 (Intel Core i5-11300H · RTX 3050 4GB)', 71000, 'Gaming pillar is strong, but ₹71K for a 4-core CPU fails the price and coding pillars.'],
-      ['Lenovo IdeaPad Slim 3 15Q8X10 (Snapdragon X · 1TB)', 63089, 'Price pillar good; Arm gaming zero.'],
-      ['Acer Aspire Lite (Intel Core i7-12650H)', 72665, '10C/16T + UHD 64EU; price is middling.'],
-      ['ASUS Vivobook 16 (2025) (Intel Core i5-13420H)', 74575, '16″ display pillar; weak GPU and price.'],
-      ['Lenovo IdeaPad Slim 3 15AHP10 (AMD Ryzen 7)', 75515, 'Conservative 610M + highest-but-one price sinks it here. <b class="cond">Confirmed 7735HS + 680M would lift it to ~#4.</b>'],
-      ['Lenovo IdeaPad Slim 3 15IRH10 (Intel Core i5-13420H)', 73990, 'Same chip as #4 at ₹8K more.'],
-      ['Lenovo V14 (2025) (Intel Core i5-13420H)', 72900, '14″ panel; 3% off.'],
-      ['Acer Aspire Lite (Intel Core i5-13420H)', 73376, '48EU graphics; the i7 sibling is cheaper and faster.'],
-      ['Lenovo IdeaPad Slim 5i 15ITL05 (Intel Core i5-1135G7)', 62999, 'Cheap, but a 4-core CPU and an unverified MX-class GPU.'],
-      ['Lenovo ThinkBook 16 (AMD Ryzen 5 220)', 82990, 'GPU unknown + highest price = last.']
-    ],
-    'r-cgd': [
-      ['Acer Aspire 7 A715-79G (Intel Core i7-13620H · RTX 3050 6GB · 144Hz)', 64809, 'Best gaming + best coding + 144Hz — clean sweep even with price ignored.'],
-      ['MSI Cyborg 15 A12UCX-264IN (Intel Core i5-12450H · RTX 2050 · 144Hz)', 60059, 'Real GPU + 8C/12T + 144Hz.'],
-      ['Lenovo IdeaPad Gaming 3 15IHU6D1 (Intel Core i5-11300H · RTX 3050 4GB)', 71000, 'Strong gaming pillar, but the 4-core CPU is the weakest coding chip in the top half.'],
-      ['Motorola Motobook 60 (Intel Core 5 210H · 14″ OLED 2.8K 120Hz)', 63990, 'OLED 120Hz wins display outright; gaming low-settings.'],
-      ['Acer Aspire Lite (Intel Core i7-12650H)', 72665, '10C/16T + UHD 64EU + 15.6″ IPS.'],
-      ['Lenovo IdeaPad Slim 3 83K100C6IN (Intel Core i5-13420H)', 66015, 'The free RAM slot quietly wins coding longevity; plain GPU.'],
-      ['ASUS Vivobook 16 (2025) (Intel Core i5-13420H)', 74575, 'Biggest canvas; weakest GPU of the top half.'],
-      ['Lenovo IdeaPad Slim 3 15AHP10 (AMD Ryzen 7)', 75515, 'Conservative 610M. <b class="cond">Confirmed 7735HS + 680M would lift it to ~#4.</b>'],
-      ['Lenovo IdeaPad Slim 3 15IRH10 (Intel Core i5-13420H)', 73990, 'Same chip as #6; ADP included.'],
-      ['Acer Aspire 14 AI A14-11M (Snapdragon X)', 56990, 'Coding ✅ native; gaming ❌ Arm.'],
-      ['Lenovo IdeaPad Slim 3 15Q8X10 (Snapdragon X · 1TB)', 63089, 'Same Arm split.'],
-      ['Lenovo V14 (2025) (Intel Core i5-13420H)', 72900, 'Same chip as #6 in a 14″ shell.'],
-      ['Acer Aspire Lite (Intel Core i5-13420H)', 73376, '48EU graphics.'],
-      ['Lenovo IdeaPad Slim 5i 15ITL05 (Intel Core i5-1135G7)', 62999, '4-core + MX-class ⚠️.'],
-      ['Lenovo ThinkBook 16 (AMD Ryzen 5 220)', 82990, '16″ is nice; the unknown GPU caps its ceiling.']
-    ],
-    'r-pc': [
-      ['Acer Aspire 14 AI A14-11M (Snapdragon X)', 56990, '₹56,990 with native VS Code/Python/Node/Java and all-day battery. Verify niche tools + Docker x86 first.'],
-      ['MSI Cyborg 15 A12UCX-264IN (Intel Core i5-12450H)', 60059, '8C/12T x86 at ₹60K with a dGPU thrown in.'],
-      ['Acer Aspire 7 A715-79G (Intel Core i7-13620H)', 64809, '10C/16T at ₹64.8K — the best compile-per-rupee on the entire page, RTX included.'],
-      ['Lenovo IdeaPad Slim 3 15Q8X10 (Snapdragon X · 1TB)', 63089, '1TB + ADP for project-heavy semesters (Arm check applies).'],
-      ['Motorola Motobook 60 (Intel Core 5 210H)', 63990, '8C/12T + OLED + 60Wh for long library days.'],
-      ['Lenovo IdeaPad Slim 3 83K100C6IN (Intel Core i5-13420H)', 66015, 'The free RAM slot makes it the cheapest future-proof coder — 24/40GB later.'],
-      ['Acer Aspire Lite (Intel Core i7-12650H)', 72665, '16 threads for heavy compiles; price is the drag. Stays above the Slim 3 15AHP10 — more cores, less money.'],
-      ['Lenovo IdeaPad Slim 3 15AHP10 (AMD Ryzen 7)', 75515, '8C/16T — a fine CPU — but the 2nd-highest price on the page buys zero confirmed GPU advantage.'],
-      ['Lenovo IdeaPad Slim 3 15IRH10 (Intel Core i5-13420H)', 73990, 'Same chip as #6, ₹8K more.'],
-      ['Lenovo V14 (2025) (Intel Core i5-13420H)', 72900, 'Same chip as #6, ₹6.9K more, smaller screen.'],
-      ['Acer Aspire Lite (Intel Core i5-13420H)', 73376, 'Same chip as #6, ₹7.4K more, onboard RAM.'],
-      ['ASUS Vivobook 16 (2025) (Intel Core i5-13420H)', 74575, 'Same chip, highest of the i5 prices.'],
-      ['Lenovo IdeaPad Slim 5i 15ITL05 (Intel Core i5-1135G7)', 62999, 'Mid price, 4-core 11th-gen — weak coding per rupee.'],
-      ['Lenovo IdeaPad Gaming 3 15IHU6D1 (Intel Core i5-11300H)', 71000, '4-core at ₹71K — the worst coding-per-rupee of the dGPU set.'],
-      ['Lenovo ThinkBook 16 (AMD Ryzen 5 220)', 82990, 'Mid CPU at the highest price of all.']
-    ]
-  };
+  /* ================= TABLE RENDER ================= */
+  const BUDGET_MAX = 85000;
+  const GROUP = {buy:0, consider:1, skip:2};
+  const VERDICT_LABEL = {buy:"Buy", consider:"Consider", skip:"Skip"};
+  let sortMode = "verdict";
+  let sortDir = 1;
 
-  /* ================= TABLE ================= */
-  let sortKey = 'rank', sortDir = 'asc';
-  const budgetMax = 85000;
-  const fmt = n => n == null ? '—' : '₹' + n.toLocaleString('en-IN');
-  const glink = q => 'https://www.google.com/search?q=' + encodeURIComponent(q);
-  const fsearch = q => 'https://www.flipkart.com/search?q=' + encodeURIComponent(q);
+  const fmt = n => (n == null ? "—" : "₹" + n.toLocaleString("en-IN"));
+  const glink = q => "https://www.google.com/search?q=" + encodeURIComponent(q);
+  const fsearch = q => "https://www.flipkart.com/search?q=" + encodeURIComponent(q);
+
+  function rowHTML(l){
+    const off = (l.price != null && l.mrp) ? Math.round((1 - l.price / l.mrp) * 100) + "% off" : "";
+    const rev = l.reviews ? " (" + (l.reviews >= 1000 ? (l.reviews / 1000).toFixed(1) + "K" : l.reviews) + ")" : "";
+    const rating = l.rating ? "★ " + l.rating + rev : "—";
+    const direct = FLIP[l.rank];
+    const links = '<span class="lnks">'
+      + '<a class="lnk' + (direct ? " direct" : "") + '" target="_blank" rel="noopener" href="' + (direct || fsearch(l.q)) + '">🛒 ' + (direct ? "listing" : "search") + "</a>"
+      + '<a class="lnk" target="_blank" rel="noopener" href="' + glink(l.q) + '">🔍 specs</a>'
+      + "</span>";
+    const upd = l.upd ? '<br><span class="upd ' + l.updType + '">' + l.upd + "</span>" : "";
+    const priceHTML = '<b class="pnum">' + fmt(l.price) + "</b>"
+      + (l.mrp ? '<br><span class="strike">' + fmt(l.mrp) + '</span> <span class="off">' + off + "</span>" : "") + upd;
+    return '<tr data-verdict="' + l.verdict + '">'
+      + '<td class="rank-cell" data-label="Rank"><div class="td-val">' + (l.unranked ? "—" : "#" + l.rank) + "</div></td>"
+      + '<td class="cell-laptop"><span class="laptop-name">' + l.name + "</span>"
+      + '<span class="model-code">' + l.variant + "</span>"
+      + '<span class="laptop-note">' + l.note + "</span>" + links + "</td>"
+      + '<td data-label="CPU"><div class="td-val">' + l.cpu + "</div></td>"
+      + '<td data-label="Graphics"><div class="td-val">' + l.gpu + "</div></td>"
+      + '<td data-label="RAM / SSD"><div class="td-val">' + l.ram + "<br>" + l.ssd + "</div></td>"
+      + '<td data-label="Display"><div class="td-val">' + l.display + "</div></td>"
+      + '<td data-label="Battery · Weight"><div class="td-val">' + l.batt + "</div></td>"
+      + '<td data-label="Rating"><div class="td-val">' + rating + "</div></td>"
+      + '<td data-label="Price"><div class="td-val">' + priceHTML + "</div></td>"
+      + '<td class="cell-verdict" data-label="Verdict"><div class="td-val"><span class="pill ' + l.verdict + '">' + VERDICT_LABEL[l.verdict] + "</span></div></td>"
+      + "</tr>";
+  }
 
   function renderTable(){
-    const v = +document.getElementById('budget').value;
-    const showAll = v >= budgetMax;
-    document.getElementById('budgetLabel').textContent =
-      showAll ? 'No limit — 15 priced + 3 unpriced' : 'Under ₹' + v.toLocaleString('en-IN');
+    const v = +document.getElementById("budget").value;
+    const filtering = v < BUDGET_MAX;
+    let rows = LAPTOPS.filter(l => !filtering || (l.price != null && l.price <= v));
 
-    const rows = LAPTOPS
-      .filter(l => showAll || (l.price != null && l.price <= v))
-      .sort((a,b) => {
-        let r = 0;
-        if (sortKey === 'rank')   r = a.rank - b.rank;
-        if (sortKey === 'price')  r = (a.price ?? Infinity) - (b.price ?? Infinity);
-        if (sortKey === 'rating') r = (b.rating ?? 0) - (a.rating ?? 0);
-        if (sortKey === 'screen') r = (a.screen ?? 0) - (b.screen ?? 0);
-        return sortDir === 'asc' ? r : -r;
-      });
+    rows = rows.slice().sort((a, b) => {
+      if (sortMode === "verdict") return (GROUP[a.verdict] - GROUP[b.verdict]) || (a.rank - b.rank);
+      if (sortMode === "rank")    return (a.rank - b.rank) * sortDir;
+      if (sortMode === "price")   return ((a.price == null ? Infinity : a.price) - (b.price == null ? Infinity : b.price)) * sortDir;
+      if (sortMode === "rating")  return ((b.rating || 0) - (a.rating || 0)) * sortDir;
+      if (sortMode === "screen")  return ((a.screen || 0) - (b.screen || 0)) * sortDir;
+      return 0;
+    });
 
-    document.querySelector('#compareTable tbody').innerHTML = rows.map(l => {
-      const off = (l.price && l.mrp) ? Math.round((1 - l.price/l.mrp)*100) + '% off' : '';
-      const rating = l.rating ? `★ ${l.rating}${l.reviews ? ` (${l.reviews >= 1000 ? (l.reviews/1000).toFixed(1)+'K' : l.reviews})` : ''}` : '—';
-      const direct = FLIP[l.rank] ? `<a class="lnk" href="${FLIP[l.rank]}" target="_blank" rel="noopener">🛒 listing</a>` : `<a class="lnk" href="${fsearch(l.q)}" target="_blank" rel="noopener">🛒 search</a>`;
-      return `<tr>
-        <td class="rank-cell">${l.unranked ? '—' : '#'+l.rank}</td>
-        <td><span class="laptop-name">${l.name}</span><span class="model-code">${l.code}</span><span class="laptop-note">${l.note}</span>
-          <span class="lnks"><a class="lnk" href="${glink(l.q)}" target="_blank" rel="noopener">🔍 specs</a>${direct}</span></td>
-        <td>${l.cpu}</td>
-        <td>${l.gpu}</td>
-        <td>${l.ram}<br>${l.ssd}</td>
-        <td>${l.display}</td>
-        <td>${l.batt}</td>
-        <td>${rating}</td>
-        <td><b>${fmt(l.price)}</b>${l.mrp ? `<br><span class="strike">${fmt(l.mrp)}</span> <span class="off">${off}</span>` : ''}</td>
-        <td><span class="pill ${l.badge}">${l.badge === 'buy' ? '✅ Buy' : l.badge === 'consider' ? '🤔 Consider' : '❌ Skip'}</span></td>
-      </tr>`;
-    }).join('');
+    document.getElementById("budgetLabel").textContent = filtering
+      ? "Under ₹" + v.toLocaleString("en-IN") + " — " + rows.length + " of 17 shown"
+      : "No limit — showing all 17 listings";
+
+    let html = "";
+    if (sortMode === "verdict") {
+      const groups = [["buy", "✅ Buy — recommended"], ["consider", "🤔 Consider — situational"], ["skip", "❌ Skip — better options above"]];
+      for (const g of groups) {
+        const gRows = rows.filter(r => r.verdict === g[0]);
+        if (!gRows.length) continue;
+        html += '<tr class="group-row"><td colspan="10">' + g[1] + " · " + gRows.length + (gRows.length > 1 ? " listings" : " listing") + "</td></tr>";
+        html += gRows.map(rowHTML).join("");
+      }
+    } else {
+      html = rows.map(rowHTML).join("");
+    }
+    document.querySelector("#compareTable tbody").innerHTML = html;
   }
 
-  document.querySelectorAll('th[data-sort]').forEach(th => {
-    th.addEventListener('click', () => {
+  function updateArrows(){
+    document.querySelectorAll("th[data-sort]").forEach(th => {
+      const a = th.querySelector(".arrow");
+      if (th.dataset.sort === sortMode && sortMode !== "verdict") a.textContent = (sortDir === 1 ? "▲" : "▼");
+      else a.textContent = "";
+    });
+  }
+
+  document.querySelectorAll("th[data-sort]").forEach(th => {
+    th.addEventListener("click", () => {
       const k = th.dataset.sort;
-      if (sortKey === k) sortDir = sortDir === 'asc' ? 'desc' : 'asc';
-      else { sortKey = k; sortDir = 'asc'; }
-      document.querySelectorAll('th .arrow').forEach(a => a.textContent = '');
-      th.querySelector('.arrow').textContent = sortDir === 'asc' ? '▲' : '▼';
+      if (sortMode === k) { sortDir = -sortDir; } else { sortMode = k; sortDir = 1; }
+      updateArrows();
       renderTable();
     });
-  });
-  document.getElementById('budget').addEventListener('input', renderTable);
-
-  /* ================= RANKINGS ================= */
-  function renderRankings(){
-    for (const [key, list] of Object.entries(RANKINGS)) {
-      document.querySelector('#' + key + ' .rank-list').innerHTML = list.map((item, i) => {
-        const medal = ['🥇','🥈','🥉'][i] || '#' + (i+1);
-        return `<li class="rank-item ${i < 3 ? 'top' : ''}">
-          <div class="rank-num">${medal}</div>
-          <div><h4>${item[0]}</h4><div class="why">${item[2]}</div></div>
-          <div class="rank-price">${fmt(item[1])}<small>price varies by sale</small></div>
-        </li>`;
-      }).join('');
-    }
-  }
-
-  document.querySelectorAll('.tab-btn').forEach(btn => {
-    btn.addEventListener('click', () => {
-      document.querySelector('.tab-btn.active').classList.remove('active');
-      document.querySelector('.ranking-panel.active').classList.remove('active');
-      btn.classList.add('active');
-      document.getElementById(btn.dataset.tab).classList.add('active');
+    th.addEventListener("keydown", e => {
+      if (e.key === "Enter" || e.key === " ") { e.preventDefault(); th.click(); }
     });
   });
+  document.getElementById("resetSort").addEventListener("click", () => {
+    sortMode = "verdict"; sortDir = 1;
+    updateArrows();
+    renderTable();
+  });
+  document.getElementById("budget").addEventListener("input", renderTable);
 
   renderTable();
-  renderRankings();
 </script>
 </body>
 </html>
